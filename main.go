@@ -31,6 +31,9 @@ func main() {
 	// Register the messageCreate func as a callback for MessageCreate events.
 	dg.AddHandler(messageCreate)
 
+	// TODO: Add MR to library to create db.UserUpdateStatusAndActivity:wq
+	//dg.UserUpdateStatus(discordgo.StatusOnline)
+
 	// In this example, we only care about receiving message events.
 	dg.Identify.Intents = discordgo.IntentsGuildMessages
 
