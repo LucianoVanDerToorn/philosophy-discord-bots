@@ -71,14 +71,22 @@ func main() {
 // This function will be called (due to AddHandler above) every time a new
 // message is created on any channel that the authenticated bot has access to.
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
+	const botPrefix = "!socrates"
+
 	// Ignore all messages created by the bot itself
-	// This isn't required in this specific example but it's a good practice.
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
 
+	// Notify users to use the botPrefix and not just mention
+	for _, mention := range m.Mentions {
+		if mention.ID == s.State.User.ID {
+			summonInfo := fmt.Sprintf("To summon me, please use %s (instead of mentioning me)", botPrefix)
+			s.ChannelMessageSendReply(m.ChannelID, summonInfo, m.MessageReference)
+		}
+	}
+
 	// Only listen to messages starting with the correct prefix
-	const botPrefix = "!socrates"
 	contents := m.Content
 	if !strings.HasPrefix(contents, botPrefix) {
 		fmt.Printf("message '%s' does not have prefix %s\n", contents, botPrefix)
@@ -128,9 +136,10 @@ type ChannelData struct {
 	DropboxLink string
 }
 func (cd ChannelData) EmbedDescription() string {
-	template := `*Info about the %s reading group*
+	template := `**Info about the *%s* reading group**
 We meet every %s on **%s** at **%s** GMT
 We are currently reading **%s**
+Press the title to open the Dropbox with the books
 The reading group leader is %s for any further questions`
 	return fmt.Sprintf(template, cd.Name, cd.MeetingEvery, cd.MeetingDay, cd.MeetingTimeGmt, cd.ReadingWhat, cd.Leader)
 }
@@ -164,7 +173,7 @@ func botCommandGroupinfo(s *discordgo.Session, m *discordgo.MessageCreate) {
 		Content:         "Here you go!",
 		Embed:           &discordgo.MessageEmbed{
 			Type:        discordgo.EmbedTypeRich,
-			Title:       fmt.Sprintf("Reading group info for the %s channel", channel),
+			Title:       fmt.Sprintf("%s Dropbox link", cd.Name),
 			Description: cd.EmbedDescription(),
 			URL: cd.DropboxLink,
 
