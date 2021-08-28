@@ -45,13 +45,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	switch botCommand {
 	case "groupinfo":
 		botCommandGroupinfo(s, m) // TODO: Support !socrates groupinfo [name]
+	case "speak":
+		botSpeak(s, m)
 	case "help":
 		botCommandHelp(s, m)
 	default:
 		botCommandHelp(s, m)
 	}
-}
-
-func botCommandHelp(s *discordgo.Session, m *discordgo.MessageCreate) {
-	s.ChannelMessageSend(m.ChannelID, "I'm Socrates, a hand-crafted bot for Bookclub Philosophy. You can ask me anything you like, but I only respond to `!socrates help` and `!socrates groupinfo` at this moment.")
 }
