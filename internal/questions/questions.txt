@@ -13,6 +13,7 @@
 2021-09-03|Would the world be a better place if everyone looked the same?
 2021-09-04|Is poverty inevitable?
 2021-09-05|Do you think there will ever be a global government?
+2021-09-06|Does might make right?
 2021-09-07|Is hierarchy necessary?
 2021-09-08|Will marriage ever become obsolete?
 2021-09-09|Pre-industrialization human beings lived better.
@@ -23,3 +24,17 @@
 2021-09-14|Does liberty consist in doing what you desire? (J.S.Mill)
 2021-09-15|Is philosophy a battle against the bewitchment of our intelligence by means of language? (L. Wittgenstein)
 2021-09-16|Is happiness the highest good? (Aristotle)
+2021-09-17|Does language affect our thinking?
+2021-09-18|Should euthanasia be legal?
+2021-09-19|Should governments prevent citizens from harming themselves?
+2021-09-20|Is democracy the best form of government?
+2021-09-21|Is technological progress a good thing?
+2021-09-22|Can a society exist without laws?
+2021-09-23|Was the invention of the atomic bomb a good thing?
+2021-09-24|Will art ever become obsolete?
+2021-09-25|Is a good fake art too?
+2021-09-26|Should art become less expensive?
+2021-09-27|Is stealing always wrong?
+2021-09-28|Can animals be creative?
+2021-09-29|Do we have a soul?
+2021-09-30|Should all museums become free?
