@@ -12,7 +12,7 @@ import (
 var QuotesFile string
 
 func LoadQuotes() []string {
-	lines := strings.Split(QuotesFile, "\n")
+	lines := strings.Split(QuotesFile, "---NEW---")
 	return util.RemoveEmptyFromStringArray(lines)
 }
 
