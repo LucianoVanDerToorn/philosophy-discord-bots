@@ -35,7 +35,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fmt.Printf("Found a message starting with '%s': '%s'\n", botPrefix, contents)
 
 	// Get the command given and run the correct handler
-	botCommand, args := parser.ParseRequest(m.Content)
+	commandString := strings.TrimPrefix(contents, botPrefix)
+	botCommand, args := parser.ParseRequest(commandString)
 	fmt.Printf("detected bot command '%s'\n", botCommand)
 
 	switch botCommand {

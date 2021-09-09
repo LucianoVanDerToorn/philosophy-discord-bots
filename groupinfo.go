@@ -169,7 +169,7 @@ func botCommandGroupinfo(s *discordgo.Session, m *discordgo.MessageCreate, chann
 	cd, ok := channelDataLookup[channel]
 	if !ok {
 		fmt.Printf("channel data not found for channel %s", channel)
-		s.ChannelMessageSend(m.ChannelID, "I could not find the meeting data for this channel")
+		s.ChannelMessageSend(m.ChannelID, "I could not find the meeting data for the given channel: "+channel)
 		return
 	}
 
