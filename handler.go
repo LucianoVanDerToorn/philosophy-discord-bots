@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/lucianonooijen/socrates-discord-bot/parser"
 )
 
 // This function will be called (due to AddHandler above) every time a new
@@ -34,17 +35,18 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fmt.Printf("Found a message starting with '%s': '%s'\n", botPrefix, contents)
 
 	// Get the command given and run the correct handler
-	botCommand := func() string { // TODO: support arguments
-		parts := strings.Split(m.Content, " ")
-		if len(parts) <= 1 {
-			return ""
-		}
-		return parts[1]
-	}()
+	botCommand, args := parser.ParseRequest(m.Content)
 	fmt.Printf("detected bot command '%s'\n", botCommand)
+
 	switch botCommand {
+	case "groups":
+		botCommandGroups(s, m)
 	case "groupinfo":
-		botCommandGroupinfo(s, m) // TODO: Support !socrates groupinfo [name]
+		if len(args) < 1 {
+			botCommandGroupinfo(s, m, "")
+		}
+		channelName := args[0]
+		botCommandGroupinfo(s, m, channelName)
 	case "speak":
 		botSpeak(s, m)
 	case "help":
