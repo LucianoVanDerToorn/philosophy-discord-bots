@@ -1,8 +1,8 @@
 package parser
 
-import "strings"
-
-// TODO: ignore leading spaces
+import (
+	"strings"
+)
 
 // ParseRequest parses the request string. To use, remove the `!socrates` prefix
 func ParseRequest(request string) (command string, arguments []string) {
