@@ -3,6 +3,7 @@ package groupinfo
 import "fmt"
 
 type ChannelData struct {
+	ChannelId      string
 	Name           string
 	Leader         string
 	MeetingEvery   string
@@ -10,7 +11,7 @@ type ChannelData struct {
 	MeetingTimeGmt string
 	ReadingWhat    string
 	ResourcesLink  string
-	// TODO: Add Zoom link
+	ZoomLink       string
 	// TODO: Add reading next
 }
 
@@ -19,29 +20,12 @@ func (cd ChannelData) EmbedDescription() string {
 We meet every %s on **%s** at **%s** GMT
 We are currently reading **%s**
 Press the title to open the link with the books
-The reading group leader is %s for any further questions`
-	return fmt.Sprintf(template, cd.Name, cd.MeetingEvery, cd.MeetingDay, cd.MeetingTimeGmt, cd.ReadingWhat, cd.Leader)
+The reading group leader is %s for any further questions
+We meet here: %s`
+	return fmt.Sprintf(template, cd.Name, cd.MeetingEvery, cd.MeetingDay, cd.MeetingTimeGmt, cd.ReadingWhat, cd.Leader, cd.ZoomLink)
 }
 
 var ChannelDataLookup = map[string]ChannelData{
-	"bot-commands": {
-		Name:           "Bot Commands",
-		Leader:         "Luciano",
-		MeetingEvery:   "week",
-		MeetingDay:     "Monday",
-		MeetingTimeGmt: "10AM",
-		ReadingWhat:    "Golang code",
-		ResourcesLink:  "https://lucianonooijen.com",
-	},
-	"arendt": {
-		Name:           "Arendt",
-		Leader:         "gintonicelderflower",
-		MeetingEvery:   "week",
-		MeetingDay:     "Sunday",
-		MeetingTimeGmt: "7PM",
-		ReadingWhat:    "The Human Condition",
-		ResourcesLink:  "https://www.dropbox.com/sh/5nnsx4hyykqq71i/AAAVql4C68PiH_-HbS506VkLa?dl=0",
-	},
 	"bookworms": {
 		Name:           "Bookworms",
 		Leader:         "Luciano",
@@ -50,6 +34,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "6.30PM",
 		ReadingWhat:    "The Shallows (August), Brave New World (September)",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
+		ZoomLink:       "https://zoom.us/j/3564836909?pwd=eHN0N09MMmdxRXNkejQ3azVpVjFLdz09",
 	},
 	"camus": {
 		Name:           "Camus",
@@ -57,27 +42,30 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingEvery:   "week",
 		MeetingDay:     "Saturdays",
 		MeetingTimeGmt: "3PM",
-		ReadingWhat:    "The Shallows (August), Brave New World (September)",
+		ReadingWhat:    "The Myth of Sisyphus",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
+		ZoomLink:       "https://us02web.zoom.us/j/86807037183",
 	},
-	"film-discussions": {
-		Name:           "Cinephile film discussions",
-		Leader:         "Yorgo",
-		MeetingEvery:   "month",
-		MeetingDay:     "first Saturday of the Month",
-		MeetingTimeGmt: "6.30PM",
-		ReadingWhat:    "To Live (September)",
-		ResourcesLink:  "https://www.youtube.com/watch?v=wNTd0dydfE4",
-	},
-	"human-nature": {
-		Name:           "Cinephile film discussions",
-		Leader:         "Yorgo",
-		MeetingEvery:   "irregular",
-		MeetingDay:     "changing every meeting",
-		MeetingTimeGmt: "changing every meeting",
-		ReadingWhat:    "changing every meeting",
-		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
-	},
+	// TODO: Add correct data and support
+	//"film-discussions": {
+	//	Name:           "Cinephile film discussions",
+	//	Leader:         "Yorgo",
+	//	MeetingEvery:   "month",
+	//	MeetingDay:     "first Saturday of the Month",
+	//	MeetingTimeGmt: "6.30PM",
+	//	ReadingWhat:    "To Live (September)",
+	//	ResourcesLink:  "https://www.youtube.com/watch?v=wNTd0dydfE4",
+	//},
+	// TODO: Add new data for epistimology
+	//"epistemology": {
+	//	Name:           "Epistemology",
+	//	Leader:         "Yorgo",
+	//	MeetingEvery:   "week",
+	//	MeetingDay:     "Thursday",
+	//	MeetingTimeGmt: "7PM",
+	//	ReadingWhat:    "epistemology",
+	//	ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
+	//},
 	"marxism": {
 		Name:           "Marxism",
 		Leader:         "Chris",
@@ -86,15 +74,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "1.30PM",
 		ReadingWhat:    "The German Ideology vol. 1",
 		ResourcesLink:  "https://www.marxists.org/archive/marx/works/1845/german-ideology/ch01.htm",
-	},
-	"kripke": {
-		Name:           "Kripke (continuing in September)",
-		Leader:         "Walker",
-		MeetingEvery:   "other week (in odd-weeks)",
-		MeetingDay:     "Friday",
-		MeetingTimeGmt: "1PM",
-		ReadingWhat:    "Naming and Necessity",
-		ResourcesLink:  "https://www.dropbox.com/sh/ja5x8nltzhzqz1b/AAC9bWLDcC4tIllJeLWwA8e0a?dl=0",
+		ZoomLink:       "https://zoom.us/j/97912504249?pwd=VmdvZ0pvNjcyamtVOGZCOEUyc1FQZz09",
 	},
 	"nietzsche": {
 		Name:           "Nietzsche",
@@ -102,8 +82,9 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingEvery:   "week",
 		MeetingDay:     "Friday",
 		MeetingTimeGmt: "6.30PM",
-		ReadingWhat:    "On Truth and Lies in an Extra Moral Sense",
+		ReadingWhat:    "On the Use and Abuse of History",
 		ResourcesLink:  "https://www.dropbox.com/sh/ja5x8nltzhzqz1b/AAC9bWLDcC4tIllJeLWwA8e0a?dl=0",
+		ZoomLink:       "https://huntercollege.zoom.us/j/4278613680",
 	},
 	"plato": {
 		Name:           "Plato",
@@ -111,26 +92,20 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingEvery:   "week",
 		MeetingDay:     "Saturday",
 		MeetingTimeGmt: "1PM",
-		ReadingWhat:    "The Republic (Book 4/5)",
+		ReadingWhat:    "The Republic",
 		ResourcesLink:  "https://www.dropbox.com/sh/ja5x8nltzhzqz1b/AAC9bWLDcC4tIllJeLWwA8e0a?dl=0",
+		ZoomLink:       "https://us02web.zoom.us/j/87596642077?pwd=M2NPSVgxUUhzVVVRNUxFczFlb2cwZz09",
 	},
-	"sartre": {
-		Name:           "Sartre",
-		Leader:         "Bob",
-		MeetingEvery:   "week",
-		MeetingDay:     "Saturday",
-		MeetingTimeGmt: "4.30PM",
-		ReadingWhat:    "No Exit",
-		ResourcesLink:  "https://www.dropbox.com/sh/8x95causpnaka4j/AADZ0HPNKCI3retNNo9uLG0ga?dl=0",
-	},
+
 	"stirner": {
 		Name:           "Stirner",
 		Leader:         "Yorgo",
 		MeetingEvery:   "week",
-		MeetingDay:     "tbd",
-		MeetingTimeGmt: "tbd",
-		ReadingWhat:    "tbd",
+		MeetingDay:     "Wednesday",
+		MeetingTimeGmt: "7.30 GMT",
+		ReadingWhat:    "The Ego and Its Own",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
+		ZoomLink:       "https://us02web.zoom.us/j/87559118162",
 	},
 	"stoicism": {
 		Name:           "Stoicism",
@@ -140,5 +115,6 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "4PM",
 		ReadingWhat:    "Epictetus' Enchiridion",
 		ResourcesLink:  "https://www.dropbox.com/sh/8hehcb8oda7gc1k/AAC1YE5jwQ7VZK3_mEwkzbCDa?dl=0",
+		ZoomLink:       "https://zoom.us/j/96810408257?pwd=VEdwMWpHQmxEaFpHNGNiL2l2Y0p4QT09",
 	},
 }

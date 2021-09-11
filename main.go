@@ -8,6 +8,7 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/lucianonooijen/socrates-discord-bot/jobs"
 )
 
 var (
@@ -31,7 +32,8 @@ func main() {
 	dg.AddHandler(messageCreate)
 
 	// Register custom functions based on a cronjob
-	addBotActionCron(dg)
+	jobs.AddQuestionCron(dg)
+	jobs.AddNotificationCron(dg)
 
 	// In this example, we only care about receiving message events.
 	dg.Identify.Intents = discordgo.IntentsGuildMessages

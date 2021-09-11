@@ -1,4 +1,4 @@
-package main
+package jobs
 
 import (
 	"fmt"
@@ -10,24 +10,22 @@ import (
 	"github.com/robfig/cron/v3"
 )
 
-// TODO: Add `jobs` package
-
 const questionChannelId = "878925957602369566"
 
-func addBotActionCron(s *discordgo.Session) {
+func AddQuestionCron(s *discordgo.Session) {
 	c := cron.New()
 	_, err := c.AddFunc("0 12 * * *", func() {
-		botActionQuestion(s)
+		question(s)
 	})
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("Added cron jobs")
+		fmt.Println("Added cron job for questions")
 	}
 	c.Start()
 }
 
-func botActionQuestion(s *discordgo.Session) {
+func question(s *discordgo.Session) {
 	qs := questions.LoadQuestions()
 	today := time.Now()
 	todaysQuestion, found := questions.GetQuestionForDate(qs, today)
