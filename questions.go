@@ -22,7 +22,7 @@ func addBotActionCron(s *discordgo.Session) {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("added cron job for ")
+		fmt.Println("Added cron jobs")
 	}
 	c.Start()
 }
