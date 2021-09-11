@@ -13,7 +13,13 @@ import (
 
 func AddNotificationCron(s *discordgo.Session) {
 	c := cron.New()
-	addNotificationCronWeekly(c, s, "13 18 * * 6", "886260511354789908", "stoicism", "886262889210593280")
+	addNotificationCronWeekly(c, s, "30 18 * * 3", "874324504401301564", "stirner", "874508087598383154")
+	addNotificationCronWeekly(c, s, "0 18 * * 4", "853666120170995724", "epistemology", "850752244793868298")
+	addNotificationCronWeekly(c, s, "0 13 * * 5", "827469681689755688", "nietzsche", "827528609081458718")
+	addNotificationCronWeekly(c, s, "0 12 * * 6", "784555854892367902", "plato", "784565469214146581")
+	addNotificationCronWeekly(c, s, "0 14 * * 6", "869272998576787516", "camus", "869240946301235252")
+	addNotificationCronWeekly(c, s, "30 12 * * 7", "858318098251513866", "marxism", "858963568955490335")
+	addNotificationCronWeekly(c, s, "0 15 * * 7", "859164046922481705", "stoicism", "858964070749175808")
 	c.Start()
 }
 
