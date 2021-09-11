@@ -5,9 +5,12 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/lucianonooijen/socrates-discord-bot/handlers"
 	"github.com/lucianonooijen/socrates-discord-bot/internal/questions"
 	"github.com/robfig/cron/v3"
 )
+
+// TODO: Add `jobs` package
 
 const questionChannelId = "878925957602369566"
 
@@ -30,14 +33,14 @@ func botActionQuestion(s *discordgo.Session) {
 	todaysQuestion, found := questions.GetQuestionForDate(qs, today)
 
 	if !found {
-		reportErrorMessage(s, questionChannelId, fmt.Errorf("question for today not found"))
+		handlers.ReportErrorMessage(s, questionChannelId, fmt.Errorf("question for today not found"))
 		return
 	}
 
 	questionMessage := fmt.Sprintf("**Today's question:**\n%s", todaysQuestion)
 	msg, err := s.ChannelMessageSend(questionChannelId, questionMessage)
 	if err != nil {
-		reportErrorMessage(s, questionChannelId, err)
+		handlers.ReportErrorMessage(s, questionChannelId, err)
 	}
 
 	_ = s.MessageReactionAdd(questionChannelId, msg.ID, "yesvote")

@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/lucianonooijen/socrates-discord-bot/handlers"
 	"github.com/lucianonooijen/socrates-discord-bot/parser"
 )
 
@@ -41,20 +42,20 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	switch botCommand {
 	case "groups":
-		botCommandGroups(s, m)
+		handlers.Groups(s, m)
 	case "groupinfo":
 		if len(args) < 1 {
-			botCommandGroupinfo(s, m, "")
+			handlers.Groupinfo(s, m, "")
 		}
 		channelName := args[0]
-		botCommandGroupinfo(s, m, channelName)
+		handlers.Groupinfo(s, m, channelName)
 	case "speak":
-		botSpeak(s, m)
+		handlers.Speak(s, m)
 	case "source":
-		botCommandSource(s, m)
+		handlers.Source(s, m)
 	case "help":
-		botCommandHelp(s, m)
+		handlers.Help(s, m)
 	default:
-		botCommandHelp(s, m)
+		handlers.Help(s, m)
 	}
 }

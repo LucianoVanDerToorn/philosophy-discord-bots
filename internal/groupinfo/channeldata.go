@@ -1,10 +1,6 @@
-package main
+package groupinfo
 
-import (
-	"fmt"
-
-	"github.com/bwmarrin/discordgo"
-)
+import "fmt"
 
 type ChannelData struct {
 	Name           string
@@ -27,7 +23,7 @@ The reading group leader is %s for any further questions`
 	return fmt.Sprintf(template, cd.Name, cd.MeetingEvery, cd.MeetingDay, cd.MeetingTimeGmt, cd.ReadingWhat, cd.Leader)
 }
 
-var channelDataLookup = map[string]ChannelData{
+var ChannelDataLookup = map[string]ChannelData{
 	"bot-commands": {
 		Name:           "Bot Commands",
 		Leader:         "Luciano",
@@ -145,41 +141,4 @@ var channelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "Epictetus' Enchiridion",
 		ResourcesLink:  "https://www.dropbox.com/sh/8hehcb8oda7gc1k/AAC1YE5jwQ7VZK3_mEwkzbCDa?dl=0",
 	},
-}
-
-func botCommandGroups(s *discordgo.Session, m *discordgo.MessageCreate) {
-	message := "**Available groups:**\n"
-	for name, data := range channelDataLookup {
-		groupLine := fmt.Sprintf("* #%s (reading: %s)\n", name, data.ReadingWhat)
-		message += groupLine
-	}
-	s.ChannelMessageSend(m.ChannelID, message)
-}
-
-func botCommandGroupinfo(s *discordgo.Session, m *discordgo.MessageCreate, channel string) {
-	c, err := s.Channel(m.ChannelID)
-	if err != nil {
-		reportErrorMessage(s, m.ChannelID, err)
-	}
-
-	if channel == "" { // Without argument, use the channel name
-		channel = c.Name
-	}
-
-	cd, ok := channelDataLookup[channel]
-	if !ok {
-		fmt.Printf("channel data not found for channel %s", channel)
-		s.ChannelMessageSend(m.ChannelID, "I could not find the meeting data for the given channel: "+channel)
-		return
-	}
-
-	s.ChannelMessageSendComplex(m.ChannelID, &discordgo.MessageSend{
-		Content: "Here you go!",
-		Embed: &discordgo.MessageEmbed{
-			Type:        discordgo.EmbedTypeRich,
-			Title:       fmt.Sprintf("%s Dropbox link", cd.Name),
-			Description: cd.EmbedDescription(),
-			URL:         cd.ResourcesLink,
-		},
-	})
 }

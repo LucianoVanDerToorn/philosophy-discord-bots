@@ -1,4 +1,4 @@
-package main
+package handlers
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func reportErrorMessage(s *discordgo.Session, channelId string, err error) {
+func ReportErrorMessage(s *discordgo.Session, channelId string, err error) {
 	const oopsieWhoopsieCopyPasta = "OOPSIE WOOPSIE!! Uwu We make a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!"
 	fmt.Printf("something went wrong: %s", err)
 	_, sendErr := s.ChannelMessageSend(channelId, fmt.Sprintf("%s\n(err: %s)", oopsieWhoopsieCopyPasta, err))
