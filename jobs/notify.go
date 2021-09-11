@@ -34,7 +34,7 @@ func addNotificationCronWeekly(c *cron.Cron, s *discordgo.Session, crontimes str
 func notifyJob(s *discordgo.Session, channelId string, channel string, roleId string) func() {
 	return func() {
 		// Initial notification one hour before
-		message := fmt.Sprintf("<@&%s> the %s meeting is starts in 60 minutes", roleId, strings.Title(channel))
+		message := fmt.Sprintf("<@&%s> the %s meeting starts in 60 minutes", roleId, strings.Title(channel))
 		_, err := s.ChannelMessageSend(channelId, message)
 		if err != nil {
 			handlers.ReportErrorMessage(s, channelId, err)
