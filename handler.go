@@ -50,6 +50,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		botCommandGroupinfo(s, m, channelName)
 	case "speak":
 		botSpeak(s, m)
+	case "source":
+		botCommandSource(s, m)
 	case "help":
 		botCommandHelp(s, m)
 	default:
