@@ -1,28 +1,31 @@
 package main
 
 import (
-	"flag"
+	_ "embed"
 	"fmt"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/lucianonooijen/socrates-discord-bot/handlers"
 	"github.com/lucianonooijen/socrates-discord-bot/jobs"
 )
 
-var (
-	Token string
-)
+//go:generate ./version.sh
 
-func init() {
-	flag.StringVar(&Token, "t", "", "Bot Token")
-	flag.Parse()
-}
+var (
+	//go:embed .discordkey
+	Token string
+
+	//go:embed .version
+	Version string
+)
 
 func main() {
 	// Create a new Discord session using the provided bot token.
-	dg, err := discordgo.New("Bot " + Token)
+	dg, err := discordgo.New("Bot " + strings.ReplaceAll(Token, "\n", ""))
 	if err != nil {
 		fmt.Println("Error creating Discord session,", err)
 		return
@@ -61,6 +64,9 @@ func main() {
 		fmt.Println("Error setting status,", err)
 		return
 	}
+
+	// Send a message that the bot has come online
+	handlers.SendToLogchannel(dg, fmt.Sprintf("I just got online with my last commit hash being %s", Version))
 
 	// Wait here until CTRL-C or other term signal is received.
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
