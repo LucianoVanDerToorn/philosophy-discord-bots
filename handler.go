@@ -28,7 +28,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Only listen to messages starting with the correct prefix
-	contents := m.Content
+	contents := strings.ToLower(m.Content)
+
 	if !strings.HasPrefix(contents, botPrefix) {
 		fmt.Printf("message '%s' does not have prefix %s\n", contents, botPrefix)
 		return
