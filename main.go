@@ -43,8 +43,7 @@ func main() {
 
 	// Set the intents
 	dg.Identify.Intents =
-		discordgo.IntentsGuildMessages |
-		discordgo.IntentsGuildMessageReactions |
+		discordgo.IntentsAllWithoutPrivileged |
 		discordgo.IntentsGuildMembers
 
 	// Open a websocket connection to Discord and begin listening.
