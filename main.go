@@ -41,8 +41,11 @@ func main() {
 	jobs.AddQuestionCron(dg)
 	jobs.AddNotificationCron(dg)
 
-	// In this example, we only care about receiving message events.
-	dg.Identify.Intents = discordgo.IntentsGuildMessages
+	// Set the intents
+	dg.Identify.Intents =
+		discordgo.IntentsGuildMessages |
+		discordgo.IntentsGuildMessageReactions |
+		discordgo.IntentsGuildMembers
 
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
