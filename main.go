@@ -34,6 +34,9 @@ func main() {
 	// Register the messageCreate func as a callback for MessageCreate events.
 	dg.AddHandler(messageCreate)
 
+	// Register the memberJoins func as a callback for when a new member joins the server.
+	dg.AddHandler(memberJoins)
+
 	// Register custom functions based on a cronjob
 	jobs.AddQuestionCron(dg)
 	jobs.AddNotificationCron(dg)

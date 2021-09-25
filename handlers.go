@@ -19,6 +19,12 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	// Ignore all messages that are replies
+	// TODO: Properly fix this so that socrates does not reply to people who reply to socrates
+	if m.Reference() != nil {
+		return
+	}
+
 	// Notify users to use the botPrefix and not just mention
 	for _, mention := range m.Mentions {
 		if mention.ID == s.State.User.ID {
@@ -59,4 +65,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	default:
 		handlers.Help(s, m)
 	}
+}
+
+func memberJoins(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
+	handlers.MemberJoins(s, m)
 }
