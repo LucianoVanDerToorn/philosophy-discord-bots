@@ -6,7 +6,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-const introductionsChannelId = "865992712511684648"
+const introductionsChannelId = "784549937345593415"
 const introductionMessageTemplate = `Welcome, %s! My name is Socrates, the hand-crafted bot for this Philosophy Bookclub server, nice to meet you.
 
 I would like to ask you a few questions. After that, a human moderator will give you access to the server, then you can pick your roles in the #roles channel.
