@@ -19,15 +19,12 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// Ignore all messages that are replies
-	// TODO: Properly fix this so that socrates does not reply to people who reply to socrates
-	if m.Reference() != nil {
-		return
-	}
-
 	// Notify users to use the botPrefix and not just mention
 	for _, mention := range m.Mentions {
 		if mention.ID == s.State.User.ID {
+			if m.Type == discordgo.MessageTypeReply { // Ignore all messages that are replies that mention @Socrates
+				return
+			}
 			summonInfo := fmt.Sprintf("To summon me, please use %s (instead of mentioning me)", botPrefix)
 			s.ChannelMessageSendReply(m.ChannelID, summonInfo, m.MessageReference)
 		}
