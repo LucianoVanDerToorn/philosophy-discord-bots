@@ -46,14 +46,14 @@
 2021-10-06|Is the unexamined life worth living?
 2021-10-07|If it was guaranteed it would always make the right decisions, would you let an AI make every decision for you?
 2021-10-08|Does history have an end?
-2021-10-09|Can art be defined?
-2021-10-10|Would you kill ten people to save one?
+2021-10-09|There should be some randomness in the modern democratic process to lower the chances of election fraud?
+2021-10-10|Is analytic philosophy the real philosophy (and the rest the history of philosophy)?
 2021-10-11|Do wealthy people have an obligation to help the poor?
 2021-10-12|Is race a social construct?
-2021-10-13|Can animals reason?
-2021-10-14|Does everything have a cause?
-2021-10-15|Are emotions irrational?
-2021-10-16|Can computers think?
+2021-10-13|Is the existence of the state legitimate?
+2021-10-14|Can computers think?
+2021-10-15|Can governments only exist because they claim a monopoly on violence?
+2021-10-16|Are emotions irrational?
 2021-10-17|Is happiness the purpose of life?
 2021-10-18|If everyone was moral, would police be unnecessary?
 2021-10-19|Can porn be artistic?
@@ -63,4 +63,13 @@
 2021-10-23|Is pornography a form of rape?
 2021-10-24|Is cinema a reflection of American capitalism?
 2021-10-25|Victory won by violence is tantamount to defeat. (Gandhi)
-2021-10-26|Is language a tool for thinking or communicating?
+2021-10-26|Is education and science in danger now more than ever before?
+2021-10-27|Do abstract objects have mind-independent existence?
+2021-10-28|Judging whether life or is not worth living is the fundamental question of philosophy (A. Camus)
+2021-10-29|Is language a tool for thinking or communicating?
+2021-10-30|Is philosophy obsolete?
+2021-10-31| Is all evil a form of ignorance?
+2021-11-01|Can art be defined?
+2021-11-02|Would you kill ten people to save one?
+2021-11-03|Can animals reason?
+2021-11-04|Does everything have a cause?
