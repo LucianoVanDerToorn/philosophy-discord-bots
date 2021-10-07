@@ -37,6 +37,8 @@ func main() {
 	// Register the memberJoins func as a callback for when a new member joins the server.
 	dg.AddHandler(memberJoins)
 
+	dg.AddHandler(memberGetsMemberRole)
+
 	// Register custom functions based on a cronjob
 	jobs.AddQuestionCron(dg)
 	jobs.AddNotificationCron(dg)
@@ -44,7 +46,7 @@ func main() {
 	// Set the intents
 	dg.Identify.Intents =
 		discordgo.IntentsAllWithoutPrivileged |
-		discordgo.IntentsGuildMembers
+			discordgo.IntentsGuildMembers
 
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
