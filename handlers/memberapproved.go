@@ -15,14 +15,25 @@ An overview of all reading groups for the upcoming week can be found in <#883007
 
 Feel free to ask any of the moderators for help!`
 
-func MemberAssignedMemberRole(s *discordgo.Session, m *discordgo.GuildMemberUpdate) {
-	memberRoleAssigned := false
-	for _, r := range m.Roles {
+func shouldSendWelcomeMessage(roles []string) bool {
+	shouldSend := false
+	// If a person has more than one role already, return,
+	// because we only want to run if a user is new and assigned their first role (being the member role)
+	if len(roles) > 1 {
+		return false
+	}
+
+	// For safety to avoid panics, run in a loop
+	for _, r := range roles {
 		if r == memberRoleId {
-			memberRoleAssigned = true
+			shouldSend = true
 		}
 	}
-	if !memberRoleAssigned {
+	return shouldSend
+}
+
+func MemberAssignedMemberRole(s *discordgo.Session, m *discordgo.GuildMemberUpdate) {
+	if shouldSend := shouldSendWelcomeMessage(m.Roles); !shouldSend {
 		return
 	}
 
