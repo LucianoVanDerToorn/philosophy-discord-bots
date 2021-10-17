@@ -9,10 +9,10 @@ import (
 	"github.com/lucianonooijen/socrates-discord-bot/parser"
 )
 
-// This function will be called (due to AddHandler above) every time a new
+// This function will be called (due to AddHandler) every time a new
 // message is created on any channel that the authenticated bot has access to.
-func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-	const botPrefix = "!socrates"
+func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
+	const botPrefix = "!diogenes"
 
 	// Ignore all messages created by the bot itself
 	if m.Author.ID == s.State.User.ID {
@@ -39,35 +39,32 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 	fmt.Printf("Found a message starting with '%s': '%s'\n", botPrefix, contents)
 
+	// Check if the channel is NSFW marked
+	channel, err := s.Channel(m.ChannelID)
+	if err != nil {
+		handlers.ReportErrorMessage(s, m.ChannelID, err)
+	}
+	if !channel.NSFW {
+		notNswf := "For obvious reasons, I will only respond to you in channels marked as NSFW"
+		s.ChannelMessageSendReply(m.ChannelID, notNswf, m.MessageReference)
+		return
+	}
+
 	// Get the command given and run the correct handler
 	commandString := strings.TrimSpace(strings.TrimPrefix(contents, botPrefix))
 	botCommand, args := parser.ParseRequest(commandString)
 	fmt.Printf("detected bot command '%s' with args %#v\n", botCommand, args)
 
 	switch botCommand {
-	case "groups":
-		handlers.Groups(s, m)
-	case "groupinfo":
-		if len(args) < 1 {
-			handlers.Groupinfo(s, m, "")
-		}
-		channelName := args[0]
-		handlers.Groupinfo(s, m, channelName)
 	case "speak":
 		handlers.Speak(s, m)
+	case "redpill":
+		handlers.Redpill(s, m)
 	case "source":
 		handlers.Source(s, m)
 	case "help":
-		handlers.Help(s, m)
+		handlers.HelpDiogenes(s, m)
 	default:
-		handlers.Help(s, m)
+		handlers.HelpDiogenes(s, m)
 	}
-}
-
-func memberJoins(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
-	handlers.MemberJoins(s, m)
-}
-
-func memberGetsMemberRole(s *discordgo.Session, m *discordgo.GuildMemberUpdate) {
-	handlers.MemberAssignedMemberRole(s, m)
 }
