@@ -12,7 +12,6 @@ type ChannelData struct {
 	ReadingWhat    string
 	ResourcesLink  string
 	ZoomLink       string
-	// TODO: Add reading next
 }
 
 func (cd ChannelData) EmbedDescription() string {
@@ -20,9 +19,8 @@ func (cd ChannelData) EmbedDescription() string {
 We meet every %s on **%s** at **%s** GMT
 We are currently reading **%s**
 Press the title to open the link with the books
-The reading group leader is %s for any further questions
-We meet here: %s`
-	return fmt.Sprintf(template, cd.Name, cd.MeetingEvery, cd.MeetingDay, cd.MeetingTimeGmt, cd.ReadingWhat, cd.Leader, cd.ZoomLink)
+The reading group leader is %s for any further questions`
+	return fmt.Sprintf(template, cd.Name, cd.MeetingEvery, cd.MeetingDay, cd.MeetingTimeGmt, cd.ReadingWhat, cd.Leader)
 }
 
 var ChannelDataLookup = map[string]ChannelData{
@@ -32,7 +30,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingEvery:   "month",
 		MeetingDay:     "last Saturday of the Month",
 		MeetingTimeGmt: "6.30PM",
-		ReadingWhat:    "The Shallows (August), Brave New World (September)",
+		ReadingWhat:    "King Lear by Shakespeare (October), Notes From Underground by Dostoevsky (November)",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
 		ZoomLink:       "https://zoom.us/j/3564836909?pwd=eHN0N09MMmdxRXNkejQ3azVpVjFLdz09",
 	},
@@ -56,16 +54,15 @@ var ChannelDataLookup = map[string]ChannelData{
 	//	ReadingWhat:    "To Live (September)",
 	//	ResourcesLink:  "https://www.youtube.com/watch?v=wNTd0dydfE4",
 	//},
-	// TODO: Add new data for epistimology
-	//"epistemology": {
-	//	Name:           "Epistemology",
-	//	Leader:         "Yorgo",
-	//	MeetingEvery:   "week",
-	//	MeetingDay:     "Thursday",
-	//	MeetingTimeGmt: "7PM",
-	//	ReadingWhat:    "epistemology",
-	//	ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
-	//},
+	"epistemology": {
+		Name:           "Epistemology",
+		Leader:         "Yorgo",
+		MeetingEvery:   "week",
+		MeetingDay:     "Thursday",
+		MeetingTimeGmt: "7PM",
+		ReadingWhat:    "changing every week",
+		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
+	},
 	"marxism": {
 		Name:           "Marxism",
 		Leader:         "Chris",
@@ -81,9 +78,9 @@ var ChannelDataLookup = map[string]ChannelData{
 		Leader:         "Andrew",
 		MeetingEvery:   "week",
 		MeetingDay:     "Friday",
-		MeetingTimeGmt: "6.30PM",
+		MeetingTimeGmt: "2PM",
 		ReadingWhat:    "On the Use and Abuse of History",
-		ResourcesLink:  "https://www.dropbox.com/sh/ja5x8nltzhzqz1b/AAC9bWLDcC4tIllJeLWwA8e0a?dl=0",
+		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
 		ZoomLink:       "https://huntercollege.zoom.us/j/4278613680",
 	},
 	"plato": {
@@ -93,10 +90,9 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingDay:     "Saturday",
 		MeetingTimeGmt: "1PM",
 		ReadingWhat:    "The Republic",
-		ResourcesLink:  "https://www.dropbox.com/sh/ja5x8nltzhzqz1b/AAC9bWLDcC4tIllJeLWwA8e0a?dl=0",
+		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
 		ZoomLink:       "https://us02web.zoom.us/j/87596642077?pwd=M2NPSVgxUUhzVVVRNUxFczFlb2cwZz09",
 	},
-
 	"stirner": {
 		Name:           "Stirner",
 		Leader:         "Yorgo",
@@ -104,7 +100,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingDay:     "Wednesday",
 		MeetingTimeGmt: "7.30 GMT",
 		ReadingWhat:    "The Ego and Its Own",
-		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
+		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
 		ZoomLink:       "https://us02web.zoom.us/j/87559118162",
 	},
 	"stoicism": {
@@ -116,5 +112,15 @@ var ChannelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "Epictetus' Enchiridion",
 		ResourcesLink:  "https://www.dropbox.com/sh/8hehcb8oda7gc1k/AAC1YE5jwQ7VZK3_mEwkzbCDa?dl=0",
 		ZoomLink:       "https://zoom.us/j/96810408257?pwd=VEdwMWpHQmxEaFpHNGNiL2l2Y0p4QT09",
+	},
+	"taoism": {
+		Name:           "Taoism",
+		Leader:         "Taolex",
+		MeetingEvery:   "week",
+		MeetingDay:     "Friday",
+		MeetingTimeGmt: "11PM",
+		ReadingWhat:    "Chuang Tzu",
+		ResourcesLink:  "https://terebess.hu/english/tao/ChuangTzu-palmer.pdf",
+		ZoomLink:       "not available, we meet on Discord in the Reading Groups voice channel",
 	},
 }

@@ -37,6 +37,7 @@ func main() {
 	// Register the memberJoins func as a callback for when a new member joins the server.
 	dg.AddHandler(memberJoins)
 
+	// Register the memberGetsMemberRole func as a callback when a member gets a role
 	dg.AddHandler(memberGetsMemberRole)
 
 	// Register custom functions based on a cronjob
