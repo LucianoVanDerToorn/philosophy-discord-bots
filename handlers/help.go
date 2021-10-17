@@ -14,8 +14,8 @@ func HelpSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 func HelpDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 	message := "I'm Diogenes, a hand-crafted bot for Bookclub Philosophy, the edgier brother of Socrates. You can talk to me in NSFW channels, and I won't ignore you if you use:\n" +
 		"`!diogenes help` and I will repeat myself again like I do now\n" +
-		"`!socrates speak` and I will give you one of my philosophical meditations\n" +
-		"`!socrates redpill` and I will show you the hard truth\n" +
-		"`!socrates source` and I will give you the link to my source code on Github"
+		"`!diogenes speak` and I will give you one of my philosophical meditations\n" +
+		"`!diogenes redpill` and I will show you the hard truth\n" +
+		"`!diogenes source` and I will give you the link to my source code on Github"
 	s.ChannelMessageSend(m.ChannelID, message)
 }
