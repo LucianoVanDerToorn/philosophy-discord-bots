@@ -57,7 +57,7 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	switch botCommand {
 	case "speak":
-		handlers.Speak(s, m)
+		handlers.SpeakNsfw(s, m)
 	case "redpill":
 		handlers.Redpill(s, m)
 	case "source":

@@ -55,9 +55,7 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 		channelName := args[0]
 		handlers.Groupinfo(s, m, channelName)
 	case "speak":
-		msg := "I can't say the things I want to say anymore, this server is literally 1984!!!11!! (But you can still ask !diogenes in nsfw channels)"
-		s.ChannelMessageSendReply(m.ChannelID, msg, m.MessageReference)
-		s.ChannelMessageSend(m.ChannelID, "!diogenes speak")
+		handlers.SpeakSfw(s, m)
 	case "source":
 		handlers.Source(s, m)
 	case "help":
