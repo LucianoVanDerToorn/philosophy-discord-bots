@@ -50,6 +50,7 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 	case "groupinfo":
 		if len(args) < 1 {
 			handlers.Groupinfo(s, m, "")
+			break
 		}
 		channelName := args[0]
 		handlers.Groupinfo(s, m, channelName)

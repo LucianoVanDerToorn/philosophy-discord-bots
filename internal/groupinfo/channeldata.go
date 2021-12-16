@@ -2,6 +2,13 @@ package groupinfo
 
 import "fmt"
 
+type MeetingOn string
+
+const (
+	MeetingOnZoom    = "zoom"
+	MeetingOnDiscord = "discord"
+)
+
 type ChannelData struct {
 	ChannelId      string
 	Name           string
@@ -12,6 +19,7 @@ type ChannelData struct {
 	ReadingWhat    string
 	ResourcesLink  string
 	ZoomLink       string
+	MeetingOn      MeetingOn
 }
 
 func (cd ChannelData) EmbedDescription() string {
@@ -33,6 +41,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "See channel",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
 		ZoomLink:       "https://zoom.us/j/3564836909?pwd=eHN0N09MMmdxRXNkejQ3azVpVjFLdz09",
+		MeetingOn:      MeetingOnZoom,
 	},
 	"camus": {
 		Name:           "Camus",
@@ -43,25 +52,17 @@ var ChannelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "The Myth of Sisyphus",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
 		ZoomLink:       "https://us02web.zoom.us/j/86807037183",
+		MeetingOn:      MeetingOnZoom,
 	},
-	// TODO: Add correct data and support
-	//"film-discussions": {
-	//	Name:           "Cinephile film discussions",
-	//	Leader:         "Yorgo",
-	//	MeetingEvery:   "month",
-	//	MeetingDay:     "first Saturday of the Month",
-	//	MeetingTimeGmt: "6.30PM",
-	//	ReadingWhat:    "To Live (September)",
-	//	ResourcesLink:  "https://www.youtube.com/watch?v=wNTd0dydfE4",
-	//},
-	"epistemology": {
-		Name:           "Epistemology",
+	"ontology": {
+		Name:           "Ontology",
 		Leader:         "Yorgo",
 		MeetingEvery:   "week",
 		MeetingDay:     "Thursday",
 		MeetingTimeGmt: "8PM",
 		ReadingWhat:    "changing every week",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
+		MeetingOn:      MeetingOnZoom,
 	},
 	"marxism": {
 		Name:           "Marxism",
@@ -72,6 +73,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "The Communist Manifesto",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
 		ZoomLink:       "https://zoom.us/j/97912504249?pwd=VmdvZ0pvNjcyamtVOGZCOEUyc1FQZz09",
+		MeetingOn:      MeetingOnZoom,
 	},
 	"nietzsche": {
 		Name:           "Nietzsche",
@@ -81,7 +83,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "2PM",
 		ReadingWhat:    "Beyond Good And Evil",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-		ZoomLink:       "https://huntercollege.zoom.us/j/4278613680",
+		MeetingOn:      MeetingOnDiscord,
 	},
 	"plato": {
 		Name:           "Plato",
@@ -92,6 +94,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "The Republic, book 7",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
 		ZoomLink:       "https://us02web.zoom.us/j/87596642077?pwd=M2NPSVgxUUhzVVVRNUxFczFlb2cwZz09",
+		MeetingOn:      MeetingOnZoom,
 	},
 	"stirner": {
 		Name:           "Stirner",
@@ -102,6 +105,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		ReadingWhat:    "The Unique and Its Property",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
 		ZoomLink:       "https://us02web.zoom.us/j/87559118162",
+		MeetingOn:      MeetingOnDiscord,
 	},
 	"stoicism": {
 		Name:           "Stoicism",
@@ -109,9 +113,9 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingEvery:   "week",
 		MeetingDay:     "Sunday",
 		MeetingTimeGmt: "4PM",
-		ReadingWhat:    "Epictetus' Enchiridion",
+		ReadingWhat:    "Marcus Aurelius' Meditations",
 		ResourcesLink:  "https://www.dropbox.com/sh/8hehcb8oda7gc1k/AAC1YE5jwQ7VZK3_mEwkzbCDa?dl=0",
-		ZoomLink:       "https://zoom.us/j/96810408257?pwd=VEdwMWpHQmxEaFpHNGNiL2l2Y0p4QT09",
+		MeetingOn:      MeetingOnZoom,
 	},
 	"taoism": {
 		Name:           "Taoism",
@@ -121,6 +125,6 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "11PM",
 		ReadingWhat:    "Chuang Tzu",
 		ResourcesLink:  "https://terebess.hu/english/tao/ChuangTzu-palmer.pdf",
-		ZoomLink:       "not available, we meet on Discord in the Reading Groups voice channel",
+		MeetingOn:      MeetingOnDiscord,
 	},
 }
