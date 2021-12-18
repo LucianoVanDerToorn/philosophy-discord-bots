@@ -32,6 +32,17 @@ The reading group leader is %s for any further questions`
 }
 
 var ChannelDataLookup = map[string]ChannelData{
+	"aristotle": {
+		Name:           "Aristotle",
+		Leader:         "Humphrey",
+		MeetingEvery:   "week",
+		MeetingDay:     "Saturday",
+		MeetingTimeGmt: "6PM",
+		ReadingWhat:    "Nicomachean Ethics",
+		ResourcesLink:  "https://www.dropbox.com/sh/sgu71nyo4uesy0g/AAAW8R7edfH2z8-k9JfAKQZoa?dl=0",
+		ZoomLink:       "https://zoom.us/j/97316252427?pwd=MmNUQUdDc0w3R0hxOWxPRGdtZ0g4Zz09 ",
+		MeetingOn:      MeetingOnZoom,
+	},
 	"bookworms": {
 		Name:           "Bookworms",
 		Leader:         "Luciano",
