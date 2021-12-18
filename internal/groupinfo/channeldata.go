@@ -43,13 +43,13 @@ var ChannelDataLookup = map[string]ChannelData{
 		ZoomLink:       "https://zoom.us/j/3564836909?pwd=eHN0N09MMmdxRXNkejQ3azVpVjFLdz09",
 		MeetingOn:      MeetingOnZoom,
 	},
-	"camus": {
-		Name:           "Camus",
+	"existentialism": {
+		Name:           "Existentialism",
 		Leader:         "Salman",
 		MeetingEvery:   "week",
 		MeetingDay:     "Saturdays",
 		MeetingTimeGmt: "4PM",
-		ReadingWhat:    "The Myth of Sisyphus",
+		ReadingWhat:    "Fear and Trembling (Kierkegaard)",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
 		ZoomLink:       "https://us02web.zoom.us/j/86807037183",
 		MeetingOn:      MeetingOnZoom,
