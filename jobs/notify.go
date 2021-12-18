@@ -22,7 +22,7 @@ func AddNotificationCron(s *discordgo.Session) {
 	addNotificationCronWeekly(c, s, "30 18 * * 5", "903398560689700894", "marxism", "858963568955490335")
 	addNotificationCronWeekly(c, s, "0 23 * * 5", "896873495340916736", "taoism", "896875467632693248")
 	addNotificationCronWeekly(c, s, "0 13 * * 6", "784555854892367902", "plato", "784565469214146581")
-	addNotificationCronWeekly(c, s, "0 15 * * 6", "869272998576787516", "camus", "869240946301235252")
+	addNotificationCronWeekly(c, s, "0 15 * * 6", "869272998576787516", "existentialism", "869240946301235252")
 	addNotificationCronWeekly(c, s, "0 17 * * 6", "899264473834078238", "aristotle", "784565293954760734")
 	addNotificationCronWeekly(c, s, "0 16 * * 0", "859164046922481705", "stoicism", "858964070749175808")
 	addNotificationCronWeekly(c, s, "30 19 * * 0", "903601581302362205", "intro-to-philosophy", "903668792771620864")
