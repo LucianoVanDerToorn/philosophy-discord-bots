@@ -37,19 +37,17 @@ func addNotificationCronWeekly(c *cron.Cron, s *discordgo.Session, crontimes str
 	fmt.Printf("Added notification job for channel %s\n", channel)
 }
 
-func shouldSkipNotification(now time.Time) bool {
+func shouldSkipNotification(now time.Time, channel string) bool {
 	day := now.Day()
-	return day == 24 || // Christmas Eve
-		day == 25 || // Christmas Day
-		day == 31 || // New Year's Eve
-		day == 1 // New Year's Day
+	shouldSkip := day == 9 && channel == "stoicism"
+	return shouldSkip
 }
 
 func notifyJob(s *discordgo.Session, channelId string, channel string, roleId string) func() {
 	return func() {
 		// Do not send notifiction on a few national holidays
 		now := time.Now()
-		if shouldSkipNotification(now) {
+		if shouldSkipNotification(now, channel) {
 			skipMessage := fmt.Sprintf("Because it's a holiday today, the %s meeting will not be held.\n(Moderators, feel free to correct me if I'm wrong, because I know nothing)", strings.Title(channel))
 			_, err := s.ChannelMessageSend(channelId, skipMessage)
 			if err != nil {
