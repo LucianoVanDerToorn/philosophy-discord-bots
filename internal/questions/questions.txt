@@ -201,3 +201,6 @@
 2022-03-13|Is there any use in reading Homer's works?
 2022-03-14|Does objective morality exist?
 2022-03-15|Is there any use in reading poetry?
+2022-03-16|Is Attic Greek the language most suitable for philosophy?
+2022-03-17|Should we ban certain books?
+2022-03-18|Is German the language most suitable for philosophy?

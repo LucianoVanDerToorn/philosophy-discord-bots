@@ -5,9 +5,10 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/robfig/cron/v3"
+
 	"github.com/lucianonooijen/socrates-discord-bot/handlers"
 	"github.com/lucianonooijen/socrates-discord-bot/internal/questions"
-	"github.com/robfig/cron/v3"
 )
 
 const questionChannelId = "878925957602369566"
@@ -41,6 +42,18 @@ func question(s *discordgo.Session) {
 		handlers.ReportErrorMessage(s, questionChannelId, err)
 	}
 
-	_ = s.MessageReactionAdd(questionChannelId, msg.ID, "yesvote")
-	_ = s.MessageReactionAdd(questionChannelId, msg.ID, "novote")
+	// Add all emojis to the message
+	var (
+		emojiIdYes      = "yesvote%3A845948680288600074"
+		emojiIdNo       = "novote%3A845948680020164609"
+		emojiIdQuestion = "%E2%9D%93"
+		emojiIdPinch    = "%F0%9F%A4%8F"
+		emojiIdAstrix   = "*%EF%B8%8F%E2%83%A3"
+	)
+	for _, e := range []string{emojiIdYes, emojiIdNo, emojiIdQuestion, emojiIdPinch, emojiIdAstrix} {
+		err = s.MessageReactionAdd(questionChannelId, msg.ID, e)
+		if err != nil {
+			handlers.ReportErrorMessage(s, questionChannelId, err)
+		}
+	}
 }
