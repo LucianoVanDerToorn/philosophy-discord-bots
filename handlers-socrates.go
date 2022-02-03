@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
+
 	"github.com/lucianonooijen/socrates-discord-bot/handlers"
 	"github.com/lucianonooijen/socrates-discord-bot/parser"
 )
@@ -35,6 +36,7 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if !strings.HasPrefix(contents, botPrefix) {
 		fmt.Printf("message '%s' does not have prefix %s\n", contents, botPrefix)
+		handlers.KeywordsSocrates(s, m, contents)
 		return
 	}
 	fmt.Printf("Found a message starting with '%s': '%s'\n", botPrefix, contents)

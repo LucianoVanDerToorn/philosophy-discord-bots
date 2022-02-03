@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+
 	"github.com/lucianonooijen/socrates-discord-bot/handlers"
 	"github.com/lucianonooijen/socrates-discord-bot/jobs"
 )
