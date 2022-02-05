@@ -19,13 +19,13 @@ func AddNotificationCron(s *discordgo.Session) {
 	addNotificationCronWeekly(c, s, "30 19 * * 3", "874324504401301564", "stirner", "874508087598383154")
 	addNotificationCronWeekly(c, s, "0 19 * * 4", "835711337979838464", "ontology", "850752244793868298")
 	addNotificationCronWeekly(c, s, "0 14 * * 5", "827469681689755688", "nietzsche", "827528609081458718")
-	addNotificationCronWeekly(c, s, "30 18 * * 5", "903398560689700894", "marxism", "858963568955490335")
+	// addNotificationCronWeekly(c, s, "30 18 * * 5", "903398560689700894", "marxism", "858963568955490335")
 	addNotificationCronWeekly(c, s, "0 23 * * 5", "896873495340916736", "taoism", "896875467632693248")
 	addNotificationCronWeekly(c, s, "0 13 * * 6", "784555854892367902", "plato", "784565469214146581")
 	addNotificationCronWeekly(c, s, "0 15 * * 6", "869272998576787516", "existentialism", "869240946301235252")
 	addNotificationCronWeekly(c, s, "0 17 * * 6", "899264473834078238", "aristotle", "784565293954760734")
 	addNotificationCronWeekly(c, s, "0 16 * * 0", "859164046922481705", "stoicism", "858964070749175808")
-	addNotificationCronWeekly(c, s, "30 19 * * 0", "903601581302362205", "intro-to-philosophy", "903668792771620864")
+	addNotificationCronWeekly(c, s, "30 19 * * 0", "903601581302362205", "meaning-of-life", "903668792771620864")
 	c.Start()
 }
 
@@ -38,9 +38,8 @@ func addNotificationCronWeekly(c *cron.Cron, s *discordgo.Session, crontimes str
 }
 
 func shouldSkipNotification(now time.Time, channel string) bool {
-	day := now.Day()
-	shouldSkip := day == 9 && channel == "stoicism"
-	return shouldSkip
+	_ = now.Day()
+	return false
 }
 
 func notifyJob(s *discordgo.Session, channelId string, channel string, roleId string) func() {
@@ -48,7 +47,7 @@ func notifyJob(s *discordgo.Session, channelId string, channel string, roleId st
 		// Do not send notifiction on a few national holidays
 		now := time.Now()
 		if shouldSkipNotification(now, channel) {
-			skipMessage := fmt.Sprintf("Because it's a holiday today, the %s meeting will not be held.\n(Moderators, feel free to correct me if I'm wrong, because I know nothing)", strings.Title(channel))
+			skipMessage := fmt.Sprintf("There is no %s meeting today.\n(Moderators, feel free to correct me if I'm wrong, because I know nothing)", strings.Title(channel))
 			_, err := s.ChannelMessageSend(channelId, skipMessage)
 			if err != nil {
 				handlers.ReportErrorMessage(s, channelId, err)
@@ -75,6 +74,13 @@ func notifyJob(s *discordgo.Session, channelId string, channel string, roleId st
 
 			if cd.MeetingOn == groupinfo.MeetingOnDiscord {
 				_, err := s.ChannelMessageSend(channelId, "The meeting will take place on Discord, in the 'Reading Groups' Voice Channel")
+				if err != nil {
+					handlers.ReportErrorMessage(s, channelId, err)
+				}
+			}
+
+			if cd.MeetingOn == groupinfo.MeetingOnUnsure {
+				_, err := s.ChannelMessageSend(channelId, "The meeting host will shortly let everyone know where the meeting will be held.")
 				if err != nil {
 					handlers.ReportErrorMessage(s, channelId, err)
 				}

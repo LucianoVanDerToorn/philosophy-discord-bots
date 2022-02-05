@@ -5,6 +5,7 @@ import "fmt"
 type MeetingOn string
 
 const (
+	MeetingOnUnsure  = "unsure"
 	MeetingOnZoom    = "zoom"
 	MeetingOnDiscord = "discord"
 )
@@ -62,7 +63,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "4PM",
 		ReadingWhat:    "Fear and Trembling (Kierkegaard)",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
-		ZoomLink:       "https://us02web.zoom.us/j/86807037183",
+		ZoomLink:       "https://us02web.zoom.us/j/2018595025",
 		MeetingOn:      MeetingOnZoom,
 	},
 	"ontology": {
@@ -73,18 +74,27 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "8PM",
 		ReadingWhat:    "changing every week",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-		MeetingOn:      MeetingOnZoom,
+		MeetingOn:      MeetingOnUnsure,
 	},
-	"marxism": {
-		Name:           "Marxism",
-		Leader:         "Marta",
+	// "marxism": {
+	// 	Name:           "Marxism",
+	// 	Leader:         "Marta",
+	// 	MeetingEvery:   "week",
+	// 	MeetingDay:     "Friday",
+	// 	MeetingTimeGmt: "7.30PM",
+	// 	ReadingWhat:    "The Communist Manifesto",
+	// 	ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
+	// 	ZoomLink:       "https://zoom.us/j/97912504249?pwd=VmdvZ0pvNjcyamtVOGZCOEUyc1FQZz09",
+	// 	MeetingOn:      MeetingOnZoom,
+	// },
+	"meaning-of-life": {
+		Name:           "Meaning of Life",
+		Leader:         "Yorgo",
 		MeetingEvery:   "week",
-		MeetingDay:     "Friday",
-		MeetingTimeGmt: "7.30PM",
-		ReadingWhat:    "The Communist Manifesto",
-		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-		ZoomLink:       "https://zoom.us/j/97912504249?pwd=VmdvZ0pvNjcyamtVOGZCOEUyc1FQZz09",
-		MeetingOn:      MeetingOnZoom,
+		MeetingDay:     "Sunday",
+		MeetingTimeGmt: "8.30PM",
+		ReadingWhat:    "changing every week",
+		MeetingOn:      MeetingOnUnsure,
 	},
 	"nietzsche": {
 		Name:           "Nietzsche",
@@ -104,8 +114,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "1PM",
 		ReadingWhat:    "The Republic, book 7",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-		ZoomLink:       "https://us02web.zoom.us/j/87596642077?pwd=M2NPSVgxUUhzVVVRNUxFczFlb2cwZz09",
-		MeetingOn:      MeetingOnZoom,
+		MeetingOn:      MeetingOnUnsure,
 	},
 	"stirner": {
 		Name:           "Stirner",
@@ -115,7 +124,6 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "7.30 GMT",
 		ReadingWhat:    "The Unique and Its Property",
 		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-		ZoomLink:       "https://us02web.zoom.us/j/87559118162",
 		MeetingOn:      MeetingOnDiscord,
 	},
 	"stoicism": {
