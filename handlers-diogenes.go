@@ -36,7 +36,8 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if !strings.HasPrefix(contents, botPrefix) {
 		fmt.Printf("message '%s' does not have prefix %s\n", contents, botPrefix)
-		handlers.KeywordsDiogenes(s, m, contents)
+		handlers.KeywordsDiogenesEmoji(s, m, contents)
+		handlers.KeywordsDiogenesText(s, m, contents)
 		return
 	}
 	fmt.Printf("Found a message starting with '%s': '%s'\n", botPrefix, contents)

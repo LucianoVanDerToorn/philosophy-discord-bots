@@ -8,7 +8,11 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func KeywordsSocrates(s *discordgo.Session, m *discordgo.MessageCreate, contents string) {
+func KeywordsSocratesEmoji(s *discordgo.Session, m *discordgo.MessageCreate, contents string) {
+	if len(contents) > 200 {
+		return
+	}
+
 	contentsLower := strings.ToLower(contents)
 	keywords := map[string]string{
 		"putin":       emojiIdYes,
@@ -37,7 +41,11 @@ func KeywordsSocrates(s *discordgo.Session, m *discordgo.MessageCreate, contents
 	}
 }
 
-func KeywordsDiogenes(s *discordgo.Session, m *discordgo.MessageCreate, contents string) {
+func KeywordsDiogenesEmoji(s *discordgo.Session, m *discordgo.MessageCreate, contents string) {
+	if len(contents) > 200 {
+		return
+	}
+
 	contentsLower := strings.ToLower(contents)
 	keywords := map[string]string{
 		"diogenes":    url.QueryEscape("👀"),
