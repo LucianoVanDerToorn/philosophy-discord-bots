@@ -57,10 +57,10 @@ var ChannelDataLookup = map[string]ChannelData{
 	},
 	"existentialism": {
 		Name:           "Existentialism",
-		Leader:         "Salman",
+		Leader:         "Salman/Yorgo",
 		MeetingEvery:   "week",
 		MeetingDay:     "Saturdays",
-		MeetingTimeGmt: "4PM",
+		MeetingTimeGmt: "4.30PM",
 		ReadingWhat:    "Fear and Trembling (Kierkegaard)",
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
 		ZoomLink:       "https://us02web.zoom.us/j/2018595025",
