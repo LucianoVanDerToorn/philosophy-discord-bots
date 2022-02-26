@@ -56,4 +56,11 @@ func question(s *discordgo.Session) {
 			handlers.ReportErrorMessage(s, questionChannelId, err)
 		}
 	}
+
+	// Open a public thread
+	threadName := fmt.Sprintf("Discussion of \"%s\"", todaysQuestion)
+	_, err = s.MessageThreadStart(questionChannelId, msg.ID, threadName, 24*60)
+	if err != nil {
+		handlers.ReportErrorMessage(s, questionChannelId, err)
+	}
 }
