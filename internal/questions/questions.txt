@@ -189,11 +189,11 @@
 2022-03-01|The two most engaging powers of an author are to make new things familiar, and familiar things new. (Samuel Johnson, 'Pope', The lives of the English poets)
 2022-03-02|Of course we can learn even from novels, Nace Novels that is, ut it isn't the same thing as serious readings. [H.G. Wells, Kipps]
 2022-03-03|Since the discovery of printing, knowledge has been called to power, and power has been used to make knowledge a slave (Napoleon I, Maxims)
-2022-03-04|The sole arbiter of beauty is taste.
+2022-03-04|Is wage labor a modern form of slavery?
 2022-03-05|Are all states oppressive by nature?
 2022-03-06|Does history repeat itself?
 2022-03-07|Can studying be an end (and not a means to another goal)?
-2022-03-08|Is there such a thing as "a priori" knowledge?
+2022-03-08|Are capitalism and anarchism compatible?
 2022-03-09|Are you actually a philosophy fan when you've only read Western philosophy and not Eastern?
 2022-03-10|Is there a realm of the forms? (Plato)
 2022-03-11|Is there any use in studying the "science" of the pre-socratic philosophers?
@@ -236,3 +236,20 @@
 2022-04-17|"The animals are much more content with mere existence than we are; the plants are wholy so; and man is so according to how dull and insensitive he is." Do you agree with Schopenhauer that dullness is a bliss in humans?
 2022-04-18|Can a translation be better than it's original?
 2022-04-19|"Is man the measure of all things, of the reality of those which are, and of the unreality of those which are not?" (Protagoras)
+2022-04-20|In a group of a million people, can lasting social organization be established without a state?
+2022-04-21|Fool me once, shame on you. Fool me twice, shame on me! (Is this correct?)
+2022-04-22|Do philosophical problems arise when language goes on holiday? (Wittgenstein)
+2022-04-23|Without justice states are just unions of criminals. (Augustine, De Civitate Dei)
+2022-04-24|Do you believe in Karma?
+2022-04-25|Do big corporations at a certain size become utilities, and should they therefore be privatized?
+2022-04-26|Should prisons be aimed at curing rather than punishing?
+2022-04-27|Should billionaires exist?
+2022-04-28|Is Jesus the most influential human of all time?
+2022-04-29|Should prostitution be legal?
+2022-04-30|Should the death penalty ever be considered as a punishment?
+2022-05-01|You are what you think
+2022-05-02|Have we reached the end of history?
+2022-05-03|Are humans hierarchical by nature (as opposed to egalitarian)?
+2022-05-04|Is Alex from A Clockwork Orange the perfect Homeric hero?
+2022-05-05|The sole arbiter of beauty is taste.
+2022-05-06|Is there such a thing as "a priori" knowledge?
