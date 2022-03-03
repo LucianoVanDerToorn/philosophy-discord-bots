@@ -57,8 +57,12 @@ func question(s *discordgo.Session) {
 		}
 	}
 
+	// Generate thread name
+	now := time.Now()
+	todayStr := now.Format("Monday 02-01-2006")
+	threadName := fmt.Sprintf("Discussion of question on \"%s\"", todayStr)
+
 	// Open a public thread
-	threadName := fmt.Sprintf("Discussion of \"%s\"", todaysQuestion)
 	_, err = s.MessageThreadStart(questionChannelId, msg.ID, threadName, 24*60)
 	if err != nil {
 		handlers.ReportErrorMessage(s, questionChannelId, err)

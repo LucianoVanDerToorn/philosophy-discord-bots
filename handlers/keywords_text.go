@@ -21,9 +21,9 @@ func KeywordsSocratesText(s *discordgo.Session, m *discordgo.MessageCreate, cont
 	keywords := map[string]string{
 		"homer":   "Homer? Talking about Homer? You better go wash your mouth with soap, young one.",
 		"1.e4 c5": "play 2.d4 and your opponent can just resign the game.",
-		"fap": fapResponse,
-		"jack": fapResponse,
-		"jerk": fapResponse,
+		"fap":     fapResponse,
+		"jack":    fapResponse,
+		"jerk":    fapResponse,
 	}
 
 	for k, reply := range keywords {

@@ -67,6 +67,8 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 		handlers.Source(s, m)
 	case "help":
 		handlers.HelpDiogenes(s, m)
+	case "supersecretreplycommand":
+		handlers.AnonymousReply(s, args)
 	default:
 		handlers.HelpDiogenes(s, m)
 	}
