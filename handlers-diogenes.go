@@ -65,10 +65,10 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 		handlers.Redpill(s, m)
 	case "source":
 		handlers.Source(s, m)
+	case "reply":
+		handlers.AnonymousReply(s, m, args)
 	case "help":
 		handlers.HelpDiogenes(s, m)
-	case "supersecretreplycommand":
-		handlers.AnonymousReply(s, args)
 	default:
 		handlers.HelpDiogenes(s, m)
 	}

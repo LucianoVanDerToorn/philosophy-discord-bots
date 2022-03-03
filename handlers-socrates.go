@@ -61,10 +61,10 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 		handlers.SpeakSfw(s, m)
 	case "source":
 		handlers.Source(s, m)
+	case "reply":
+		handlers.AnonymousReply(s, m, args)
 	case "help":
 		handlers.HelpSocrates(s, m)
-	case "supersecretreplycommand":
-		handlers.AnonymousReply(s, args)
 	default:
 		handlers.HelpSocrates(s, m)
 	}
