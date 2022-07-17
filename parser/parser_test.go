@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/lucianonooijen/socrates-discord-bot/parser"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/parser"
 )
 
 func TestParseRequest_Empty(t *testing.T) {

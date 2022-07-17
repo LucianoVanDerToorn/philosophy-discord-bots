@@ -3,8 +3,8 @@ package handlers
 import (
 	"fmt"
 
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/groupinfo"
 	"github.com/bwmarrin/discordgo"
-	"github.com/lucianonooijen/socrates-discord-bot/internal/groupinfo"
 )
 
 func Groupinfo(s *discordgo.Session, m *discordgo.MessageCreate, channel string) {

@@ -7,8 +7,8 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/robfig/cron/v3"
 
-	"github.com/lucianonooijen/socrates-discord-bot/handlers"
-	"github.com/lucianonooijen/socrates-discord-bot/internal/questions"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/handlers"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/questions"
 )
 
 const questionChannelId = "878925957602369566"

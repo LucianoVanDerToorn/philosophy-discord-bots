@@ -6,8 +6,8 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"github.com/lucianonooijen/socrates-discord-bot/handlers"
-	"github.com/lucianonooijen/socrates-discord-bot/parser"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/handlers"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/parser"
 )
 
 // This function will be called (due to AddHandler) every time a new

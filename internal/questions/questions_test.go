@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lucianonooijen/socrates-discord-bot/internal/questions"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/questions"
 )
 
 const testInput = `2021-08-22|Is our world real?

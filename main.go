@@ -10,8 +10,8 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"github.com/lucianonooijen/socrates-discord-bot/handlers"
-	"github.com/lucianonooijen/socrates-discord-bot/jobs"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/handlers"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/jobs"
 )
 
 //go:generate ./version.sh

@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"strings"
 
-	"github.com/lucianonooijen/socrates-discord-bot/internal/util"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/util"
 )
 
 //go:embed speak_sfw.txt

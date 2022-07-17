@@ -1,4 +1,4 @@
-module github.com/lucianonooijen/socrates-discord-bot
+module github.com/LucianoVanDerToorn/philosophy-discord-bots
 
 go 1.16
 

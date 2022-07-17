@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/handlers"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/groupinfo"
 	"github.com/bwmarrin/discordgo"
-	"github.com/lucianonooijen/socrates-discord-bot/handlers"
-	"github.com/lucianonooijen/socrates-discord-bot/internal/groupinfo"
 	"github.com/robfig/cron/v3"
 )
 

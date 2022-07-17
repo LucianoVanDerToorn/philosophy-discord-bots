@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/lucianonooijen/socrates-discord-bot/internal/util"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/util"
 )
 
 func TestRemoveEmptyFromStringArray(t *testing.T) {
