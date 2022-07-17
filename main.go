@@ -17,19 +17,13 @@ import (
 //go:generate ./version.sh
 
 var (
-	//go:embed socrates.discordkey
-	TokenSocrates string
-
-	//go:embed diogenes.discordkey
-	TokenDiogenes string
-
 	//go:embed .version
 	Version string
 )
 
-func initSocrates() *discordgo.Session {
+func initSocrates(token string) *discordgo.Session {
 	// Create a new Discord session using the provided bot token.
-	dg, err := discordgo.New("Bot " + strings.ReplaceAll(TokenSocrates, "\n", ""))
+	dg, err := discordgo.New("Bot " + strings.ReplaceAll(token, "\n", ""))
 	if err != nil {
 		fmt.Println("Error creating Discord session,", err)
 		panic(err)
@@ -82,9 +76,9 @@ func initSocrates() *discordgo.Session {
 	return dg
 }
 
-func initDiogenes() *discordgo.Session {
+func initDiogenes(token string) *discordgo.Session {
 	// Create a new Discord session using the provided bot token.
-	dg, err := discordgo.New("Bot " + strings.ReplaceAll(TokenDiogenes, "\n", ""))
+	dg, err := discordgo.New("Bot " + strings.ReplaceAll(token, "\n", ""))
 	if err != nil {
 		fmt.Println("Error creating Discord session,", err)
 		panic(err)
@@ -125,9 +119,55 @@ func initDiogenes() *discordgo.Session {
 	return dg
 }
 
+func initBenjamin(token string) *discordgo.Session {
+	// Create a new Discord session using the provided bot token.
+	dg, err := discordgo.New("Bot " + strings.ReplaceAll(token, "\n", ""))
+	if err != nil {
+		fmt.Println("Error creating Discord session,", err)
+		panic(err)
+	}
+
+	// Register the messageCreateBenjamin func as a callback for MessageCreate events.
+	//dg.AddHandler(messageCreateBenjamin)
+
+	// Set the intents
+	dg.Identify.Intents = discordgo.IntentsAllWithoutPrivileged
+
+	// Open a websocket connection to Discord and begin listening.
+	err = dg.Open()
+	if err != nil {
+		fmt.Println("Error opening connection,", err)
+		panic(err)
+	}
+
+	// Set status and activity
+	err = dg.UpdateStatusComplex(discordgo.UpdateStatusData{
+		IdleSince: nil,
+		Activities: []*discordgo.Activity{
+			{
+				Name: "making Levy cry like a grandmaster",
+				Type: 5,
+			},
+		},
+		AFK:    false,
+		Status: "online",
+	})
+	if err != nil {
+		fmt.Println("Error setting status,", err)
+		panic(err)
+	}
+
+	// Send a message that the bot has come online
+	handlers.SendToLogchannel(dg, fmt.Sprintf("I just got online with my last commit hash being %s", Version))
+	return dg
+}
+
 func main() {
-	sgSocrates := initSocrates()
-	sgDiogenes := initDiogenes()
+	config := LoadConfigMust()
+
+	sgSocrates := initSocrates(config.Socrates)
+	sgDiogenes := initDiogenes(config.Diogenes)
+	sgBenjamin := initBenjamin(config.Benjamin)
 
 	// Wait here until CTRL-C or other term signal is received.
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
@@ -138,4 +178,5 @@ func main() {
 	// Cleanly close down the Discord sessions.
 	sgSocrates.Close()
 	sgDiogenes.Close()
+	sgBenjamin.Close()
 }

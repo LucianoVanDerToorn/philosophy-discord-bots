@@ -1,3 +1,4 @@
 .idea/
 *.discordkey
 socrates-discord-bot
+config.toml
