@@ -134,7 +134,7 @@ var ChannelDataLookup = map[string]ChannelData{
 		MeetingTimeGmt: "4PM",
 		ReadingWhat:    "Marcus Aurelius' Meditations",
 		ResourcesLink:  "https://www.dropbox.com/sh/8hehcb8oda7gc1k/AAC1YE5jwQ7VZK3_mEwkzbCDa?dl=0",
-		ZoomLink:       "https://zoom.us/j/96810408257?pwd=VEdwMWpHQmxEaFpHNGNiL2l2Y0p4QT09",
+		ZoomLink:       "https://us06web.zoom.us/j/97681357129?pwd=VUs3N1FuV2Z4ckx3UDJRUDhJVE94Zz09",
 		MeetingOn:      MeetingOnZoom,
 	},
 	"taoism": {
