@@ -12,8 +12,8 @@ import (
 
 // This function will be called (due to AddHandler) every time a new
 // message is created on any channel that the authenticated bot has access to.
-func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
-	const botPrefix = "!diogenes"
+func messageCreateBen(s *discordgo.Session, m *discordgo.MessageCreate) {
+	const botPrefix = "!finegold"
 
 	// Ignore all messages created by the bot itself
 	if m.Author.ID == s.State.User.ID {
@@ -36,22 +36,11 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if !strings.HasPrefix(contents, botPrefix) {
 		fmt.Printf("message '%s' does not have prefix %s\n", contents, botPrefix)
-		handlers.KeywordsDiogenesEmoji(s, m, contents)
-		handlers.KeywordsDiogenesText(s, m, contents)
+		// 	handlers.KeywordsDiogenesEmoji(s, m, contents)
+		// 	handlers.KeywordsDiogenesText(s, m, contents)
 		return
 	}
 	fmt.Printf("Found a message starting with '%s': '%s'\n", botPrefix, contents)
-
-	// Check if the channel is NSFW marked
-	channel, err := s.Channel(m.ChannelID)
-	if err != nil {
-		handlers.ReportErrorMessage(s, m.ChannelID, err)
-	}
-	if !channel.NSFW {
-		notNswf := "For obvious reasons, I will only respond to you in channels marked as NSFW"
-		s.ChannelMessageSendReply(m.ChannelID, notNswf, m.MessageReference)
-		return
-	}
 
 	// Get the command given and run the correct handler
 	commandString := strings.TrimSpace(strings.TrimPrefix(contents, botPrefix))
@@ -60,16 +49,12 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	switch botCommand {
 	case "speak":
-		handlers.SpeakDiogenes(s, m)
-	case "redpill":
-		handlers.Redpill(s, m)
-	case "source":
-		handlers.Source(s, m)
+		handlers.SpeakBen(s, m)
 	case "reply":
 		handlers.AnonymousReply(s, m, args)
 	case "help":
-		handlers.HelpDiogenes(s, m)
+		handlers.HelpFinegold(s, m)
 	default:
-		handlers.HelpDiogenes(s, m)
+		handlers.HelpFinegold(s, m)
 	}
 }

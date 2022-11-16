@@ -19,3 +19,11 @@ func HelpDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 		"`!diogenes source` and I will give you the link to my source code on Github"
 	s.ChannelMessageSend(m.ChannelID, message)
 }
+
+func HelpFinegold(s *discordgo.Session, m *discordgo.MessageCreate) {
+	message := "I'm Ben Finegold, a hand-crafted bot for Bookclub Philosophy, the chess bot, my commands:\n" +
+		"`!finegold help` and I will repeat myself again like I do now\n" +
+		"`!finegold speak` and I will give you one of my philosophical meditations\n" +
+		"`!finegold source` and I will give you the link to my source code on Github"
+	s.ChannelMessageSend(m.ChannelID, message)
+}

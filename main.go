@@ -127,8 +127,8 @@ func initBenjamin(token string) *discordgo.Session {
 		panic(err)
 	}
 
-	// Register the messageCreateBenjamin func as a callback for MessageCreate events.
-	//dg.AddHandler(messageCreateBenjamin)
+	// Register the messageCreateBen func as a callback for MessageCreate events.
+	dg.AddHandler(messageCreateBen)
 
 	// Set the intents
 	dg.Identify.Intents = discordgo.IntentsAllWithoutPrivileged

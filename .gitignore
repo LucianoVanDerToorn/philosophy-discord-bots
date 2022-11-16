@@ -2,3 +2,4 @@
 *.discordkey
 socrates-discord-bot
 config.toml
+./philosophy-discord-bots
