@@ -19,6 +19,7 @@ func SpeakDiogenes(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
 	if !channel.NSFW {
 		InteractionMessageResponse(s, i, "My brother in Christ, do you think summoning me in a non-NSFW channel is a good idea?")
+		return
 	}
 
 	quote := speak.RandomQuote(botid.Diogenes)
