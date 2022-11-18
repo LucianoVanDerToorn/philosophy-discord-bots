@@ -33,17 +33,6 @@ The reading group leader is %s for any further questions`
 }
 
 var ChannelDataLookup = map[string]ChannelData{
-	"aristotle": {
-		Name:           "Aristotle",
-		Leader:         "Humphrey",
-		MeetingEvery:   "week",
-		MeetingDay:     "Saturday",
-		MeetingTimeGmt: "6PM",
-		ReadingWhat:    "Nicomachean Ethics",
-		ResourcesLink:  "https://www.dropbox.com/sh/sgu71nyo4uesy0g/AAAW8R7edfH2z8-k9JfAKQZoa?dl=0",
-		ZoomLink:       "https://zoom.us/j/97316252427?pwd=MmNUQUdDc0w3R0hxOWxPRGdtZ0g4Zz09 ",
-		MeetingOn:      MeetingOnZoom,
-	},
 	"bookworms": {
 		Name:           "Bookworms",
 		Leader:         "Luciano",
@@ -54,47 +43,6 @@ var ChannelDataLookup = map[string]ChannelData{
 		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
 		ZoomLink:       "https://zoom.us/j/3564836909?pwd=eHN0N09MMmdxRXNkejQ3azVpVjFLdz09",
 		MeetingOn:      MeetingOnZoom,
-	},
-	"existentialism": {
-		Name:           "Existentialism",
-		Leader:         "Salman/Yorgo",
-		MeetingEvery:   "week",
-		MeetingDay:     "Saturdays",
-		MeetingTimeGmt: "4.30PM",
-		ReadingWhat:    "Fear and Trembling (Kierkegaard)",
-		ResourcesLink:  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // TODO: Create
-		ZoomLink:       "https://us02web.zoom.us/j/2018595025",
-		MeetingOn:      MeetingOnZoom,
-	},
-	"ontology": {
-		Name:           "Ontology",
-		Leader:         "Yorgo",
-		MeetingEvery:   "week",
-		MeetingDay:     "Thursday",
-		MeetingTimeGmt: "8PM",
-		ReadingWhat:    "changing every week",
-		ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-		MeetingOn:      MeetingOnUnsure,
-	},
-	// "marxism": {
-	// 	Name:           "Marxism",
-	// 	Leader:         "Marta",
-	// 	MeetingEvery:   "week",
-	// 	MeetingDay:     "Friday",
-	// 	MeetingTimeGmt: "7.30PM",
-	// 	ReadingWhat:    "The Communist Manifesto",
-	// 	ResourcesLink:  "https://www.dropbox.com/sh/gcmixj7nad7btsh/AAD0OEfua3SqWtDSAJnC3xnaa?dl=0",
-	// 	ZoomLink:       "https://zoom.us/j/97912504249?pwd=VmdvZ0pvNjcyamtVOGZCOEUyc1FQZz09",
-	// 	MeetingOn:      MeetingOnZoom,
-	// },
-	"meaning-of-life": {
-		Name:           "Meaning of Life",
-		Leader:         "Yorgo",
-		MeetingEvery:   "week",
-		MeetingDay:     "Sunday",
-		MeetingTimeGmt: "8.30PM",
-		ReadingWhat:    "changing every week",
-		MeetingOn:      MeetingOnUnsure,
 	},
 	"nietzsche": {
 		Name:           "Nietzsche",

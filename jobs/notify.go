@@ -12,7 +12,7 @@ import (
 )
 
 // Note: times are the times for notification
-// calculate this using meeting time minus one hou
+// calculate this using meeting time minus one hour
 // use GMT times.
 func AddNotificationCron(s *discordgo.Session) {
 	c := cron.New()
