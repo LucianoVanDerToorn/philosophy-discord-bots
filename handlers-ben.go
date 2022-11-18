@@ -48,8 +48,6 @@ func messageCreateBen(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fmt.Printf("detected bot command '%s' with args %#v\n", botCommand, args)
 
 	switch botCommand {
-	case "speak":
-		handlers.SpeakBen(s, m)
 	case "reply":
 		handlers.AnonymousReply(s, m, args)
 	case "help":

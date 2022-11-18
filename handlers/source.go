@@ -1,8 +1,10 @@
 package handlers
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"github.com/bwmarrin/discordgo"
+)
 
-func Source(s *discordgo.Session, m *discordgo.MessageCreate) {
+func Source(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	message := "You can find my source code here: https://github.com/LucianoVanDerToorn/philosophy-discord-bots"
-	s.ChannelMessageSend(m.ChannelID, message)
+	InteractionMessageResponse(s, i, message)
 }

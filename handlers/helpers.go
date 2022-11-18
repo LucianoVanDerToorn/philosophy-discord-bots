@@ -14,3 +14,13 @@ func ReportErrorMessage(s *discordgo.Session, channelId string, err error) {
 		fmt.Printf("error sending error message to Discord: %s", err)
 	}
 }
+
+func InteractionMessageResponse(s *discordgo.Session, i *discordgo.InteractionCreate, message string) {
+	err := s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+		Type: discordgo.InteractionResponseChannelMessageWithSource,
+		Data: &discordgo.InteractionResponseData{Content: message},
+	})
+	if err != nil {
+		ReportErrorMessage(s, i.ChannelID, err)
+	}
+}

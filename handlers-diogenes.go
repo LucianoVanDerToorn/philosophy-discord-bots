@@ -59,12 +59,8 @@ func messageCreateDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fmt.Printf("detected bot command '%s' with args %#v\n", botCommand, args)
 
 	switch botCommand {
-	case "speak":
-		handlers.SpeakDiogenes(s, m)
 	case "redpill":
 		handlers.Redpill(s, m)
-	case "source":
-		handlers.Source(s, m)
 	case "reply":
 		handlers.AnonymousReply(s, m, args)
 	case "help":

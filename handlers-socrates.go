@@ -57,10 +57,6 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 		channelName := args[0]
 		handlers.Groupinfo(s, m, channelName)
-	case "speak":
-		handlers.SpeakSocrates(s, m)
-	case "source":
-		handlers.Source(s, m)
 	case "reply":
 		handlers.AnonymousReply(s, m, args)
 	case "help":

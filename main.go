@@ -3,6 +3,7 @@ package main
 import (
 	_ "embed"
 	"fmt"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/commands"
 	"os"
 	"os/signal"
 	"strings"
@@ -26,6 +27,12 @@ func initSocrates(token string) *discordgo.Session {
 	dg, err := discordgo.New("Bot " + strings.ReplaceAll(token, "\n", ""))
 	if err != nil {
 		fmt.Println("Error creating Discord session,", err)
+		panic(err)
+	}
+
+	// Register the slash commands
+	if err = commands.AddCommandsAndHandlersSocrates(dg); err != nil {
+		fmt.Println("Error adding Socrates slash commands,", err)
 		panic(err)
 	}
 
@@ -84,6 +91,12 @@ func initDiogenes(token string) *discordgo.Session {
 		panic(err)
 	}
 
+	// Register the slash commands
+	if err = commands.AddCommandsAndHandlersDiogenes(dg); err != nil {
+		fmt.Println("Error adding Diogenes slash commands,", err)
+		panic(err)
+	}
+
 	// Register the messageCreateDiogenes func as a callback for MessageCreate events.
 	dg.AddHandler(messageCreateDiogenes)
 
@@ -124,6 +137,12 @@ func initBenjamin(token string) *discordgo.Session {
 	dg, err := discordgo.New("Bot " + strings.ReplaceAll(token, "\n", ""))
 	if err != nil {
 		fmt.Println("Error creating Discord session,", err)
+		panic(err)
+	}
+
+	// Register the slash commands
+	if err = commands.AddCommandsAndHandlersFinegold(dg); err != nil {
+		fmt.Println("Error adding Finegold slash commands,", err)
 		panic(err)
 	}
 

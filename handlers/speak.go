@@ -6,17 +6,26 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func SpeakSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
+func SpeakSocrates(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	quote := speak.RandomQuote(botid.Socrates)
-	s.ChannelMessageSend(m.ChannelID, quote)
+	InteractionMessageResponse(s, i, quote)
 }
 
-func SpeakDiogenes(s *discordgo.Session, m *discordgo.MessageCreate) {
+func SpeakDiogenes(s *discordgo.Session, i *discordgo.InteractionCreate) {
+	channel, err := s.Channel(i.ChannelID)
+	if err != nil {
+		ReportErrorMessage(s, i.ChannelID, err)
+	}
+
+	if !channel.NSFW {
+		InteractionMessageResponse(s, i, "My brother in Christ, do you think summoning me in a non-NSFW channel is a good idea?")
+	}
+
 	quote := speak.RandomQuote(botid.Diogenes)
-	s.ChannelMessageSend(m.ChannelID, quote)
+	InteractionMessageResponse(s, i, quote)
 }
 
-func SpeakBen(s *discordgo.Session, m *discordgo.MessageCreate) {
+func SpeakBen(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	quote := speak.RandomQuote(botid.Ben)
-	s.ChannelMessageSend(m.ChannelID, quote)
+	InteractionMessageResponse(s, i, quote)
 }
