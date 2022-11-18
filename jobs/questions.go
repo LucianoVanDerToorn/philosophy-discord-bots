@@ -11,7 +11,8 @@ import (
 	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/questions"
 )
 
-const questionChannelId = "878925957602369566"
+const questionChannelId = "1043233424695111782"
+const questionRoleId = "1043231298187178015"
 
 func AddQuestionCron(s *discordgo.Session) {
 	c := cron.New()
@@ -36,7 +37,7 @@ func question(s *discordgo.Session) {
 		return
 	}
 
-	questionMessage := fmt.Sprintf("**Today's question:**\n%s", todaysQuestion)
+	questionMessage := fmt.Sprintf("<@&%s> **Today's question:**\n%s", questionRoleId, todaysQuestion)
 	msg, err := s.ChannelMessageSend(questionChannelId, questionMessage)
 	if err != nil {
 		handlers.ReportErrorMessage(s, questionChannelId, err)
