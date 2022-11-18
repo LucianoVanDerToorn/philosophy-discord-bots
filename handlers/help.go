@@ -6,8 +6,6 @@ func HelpSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 	message := "I'm Socrates, a hand-crafted bot for Bookclub Philosophy. You can ask me anything you like, but I only respond to:\n" +
 		"`!socrates help` and I will say what I am saying now\n" +
 		"`!socrates speak` NOW VIA SLASH COMMANDS!\n" +
-		"`!socrates groups` and I will list all of the groups on this Discord server for you\n" +
-		"`!socrates groupinfo [group]` and I will give you info on that group (group is optional)\n" +
 		"`!socrates source` NOW VIA SLASH COMMANDS!"
 	s.ChannelMessageSend(m.ChannelID, message)
 }

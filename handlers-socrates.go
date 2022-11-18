@@ -48,15 +48,6 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fmt.Printf("detected bot command '%s' with args %#v\n", botCommand, args)
 
 	switch botCommand {
-	case "groups":
-		handlers.Groups(s, m)
-	case "groupinfo":
-		if len(args) < 1 {
-			handlers.Groupinfo(s, m, "")
-			break
-		}
-		channelName := args[0]
-		handlers.Groupinfo(s, m, channelName)
 	case "reply":
 		handlers.AnonymousReply(s, m, args)
 	case "help":
