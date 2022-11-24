@@ -2,27 +2,14 @@ package handlers
 
 import (
 	"fmt"
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/permissions"
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
 
-// TODO: Check for mod role
-
-func isModerator(m *discordgo.Member) bool {
-	moderatorRole := "784504367734063105"
-
-	for _, r := range m.Roles {
-		if r == moderatorRole {
-			return true
-		}
-	}
-
-	return false
-}
-
 func AnonymousReply(s *discordgo.Session, m *discordgo.MessageCreate, args []string) {
-	if !isModerator(m.Member) {
+	if !permissions.IsModerator(m.Member) {
 		SendToLogchannel(s, fmt.Sprintf("user %s invoked reply command but is not mod", m.Member.Nick))
 		return
 	}

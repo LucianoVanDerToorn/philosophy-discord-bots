@@ -11,7 +11,7 @@ const approvedMessageTemplate = `Hooray, %s! You have been granted the Member ro
 
 You can pick your roles in <#784552536044339201>.
 
-An overview of all reading groups for the upcoming week can be found in <#883007166859083796>.
+An overview of all reading groups for the upcoming week can be found in the events tab.
 
 Feel free to ask any of the moderators for help!`
 

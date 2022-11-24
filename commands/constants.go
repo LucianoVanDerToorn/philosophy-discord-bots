@@ -5,6 +5,7 @@ const (
 	commandIdSocrates = "socrates"
 	commandIdDiogenes = "diogenes"
 	commandIdFinegold = "finegold"
+	commandIdMod      = "mod"
 
 	// Subcommands shared
 	commandSpeak  = "speak"

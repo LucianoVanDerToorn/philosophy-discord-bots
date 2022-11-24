@@ -1,14 +1,15 @@
 package commands
 
 import (
-	"fmt"
 	"github.com/LucianoVanDerToorn/philosophy-discord-bots/handlers"
 	"github.com/LucianoVanDerToorn/philosophy-discord-bots/internal/constants"
 	"github.com/bwmarrin/discordgo"
 )
 
 func AddCommandsAndHandlersSocrates(s *discordgo.Session) error {
-	_, err := s.ApplicationCommandBulkOverwrite(constants.AppIdSocrates, constants.GuildIdLive, socratesCommands)
+	bulkCommands := append(socratesCommands, modCommands...)
+
+	_, err := s.ApplicationCommandBulkOverwrite(constants.AppIdSocrates, constants.GuildIdLive, bulkCommands)
 	if err != nil {
 		return err
 	}
@@ -51,11 +52,22 @@ func socratesHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		} else {
 			socratesCommandHandler(s, i)
 		}
+	case commandIdMod:
+		if data.Options == nil {
+			s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+				Type: discordgo.InteractionResponseChannelMessageWithSource,
+				Data: &discordgo.InteractionResponseData{
+					Content: "You need to select an option to interact with Moderator commands",
+				},
+			})
+		} else {
+			moderatorCommandHandler(s, i)
+		}
 	default:
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
-				Content: "Something went wrong",
+				Content: "Something went wrong; commandId not recognized",
 			},
 		})
 	}
@@ -77,5 +89,4 @@ func socratesCommandHandler(s *discordgo.Session, i *discordgo.InteractionCreate
 			},
 		})
 	}
-	fmt.Printf("%#v\n", subcommand)
 }

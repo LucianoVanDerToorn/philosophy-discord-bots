@@ -12,13 +12,12 @@ const introductionMessageTemplate = `Welcome, %s! My name is Socrates, the hand-
 
 I would like to ask you a few questions. After that, a human moderator will give you access to the server. When you get access, I will show you where you can pick roles and see our meeting schedule.
 
-1. What are your name, pronouns and age?
-2. How did you first get interested in philosophy?
-3. What areas of  philosophy and which thinkers do you want to find out more about?
-4. What kinds of people do you want to have discussions with?
-5. Do you agree with the <#784544880591896599> and in particular, the principle of charity?
+1. How old are you?
+2. Which <#1044943486564192306> interest you?
+3. Do you agree with the <#784544880591896599>? (principle of charity is gone)
+4. Optionally, tell us a few things about yourself and how you got interested in philosophy.
 
-You can answer these questions in <#784549937345593415>. Feel free to omit the answers to questions you’re uncomfortable with. That said, providing this information will be helpful to us.`
+You can answer these questions in <#784549937345593415>.`
 
 func MemberJoins(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 	time.Sleep(3 * time.Second) // Wait a few seconds to grasp the user's attention
