@@ -5,32 +5,21 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var modCommands = []*discordgo.ApplicationCommand{
-	{
-		Name:        commandIdMod,
-		Description: "Moderator commands",
-		Options: []*discordgo.ApplicationCommandOption{
-			{
-				Name:        "test",
-				Type:        discordgo.ApplicationCommandOptionSubCommand,
-				Description: "Testing",
-			},
-		},
-	},
-}
-
 func moderatorCommandHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	data := i.ApplicationCommandData()
 	subcommand := data.Options[0].Name
 	switch subcommand {
-	case "test":
-		handlers.SpeakSocrates(s, i)
+	case commandApprove:
+		member := data.Options[0].Options[0].Value
+		if member == nil {
+			sendInteractionError(s, i, "Member value not set")
+			return
+		}
+		user := member.(string)
+		handlers.ApproveMember(s, i, user)
+
+		//InteractionMessageResponse(s, i, fmt.Sprintf("Member %s approved, data %#v", memberToApprove, data))
 	default:
-		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-			Type: discordgo.InteractionResponseChannelMessageWithSource,
-			Data: &discordgo.InteractionResponseData{
-				Content: "Something went wrong, could not parse command",
-			},
-		})
+		sendInteractionError(s, i, "Something went wrong, could not parse command")
 	}
 }

@@ -14,7 +14,7 @@ I would like to ask you a few questions. After that, a human moderator will give
 
 1. How old are you?
 2. Which <#1044943486564192306> interest you?
-3. Do you agree with the <#784544880591896599>? (principle of charity is gone)
+3. Do you agree with the <#784544880591896599>?
 4. Optionally, tell us a few things about yourself and how you got interested in philosophy.
 
 You can answer these questions in <#784549937345593415>.`

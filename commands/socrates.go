@@ -7,9 +7,7 @@ import (
 )
 
 func AddCommandsAndHandlersSocrates(s *discordgo.Session) error {
-	bulkCommands := append(socratesCommands, modCommands...)
-
-	_, err := s.ApplicationCommandBulkOverwrite(constants.AppIdSocrates, constants.GuildIdLive, bulkCommands)
+	_, err := s.ApplicationCommandBulkOverwrite(constants.AppIdSocrates, constants.GuildIdLive, socratesCommands)
 	if err != nil {
 		return err
 	}
@@ -36,6 +34,27 @@ var socratesCommands = []*discordgo.ApplicationCommand{
 			},
 		},
 	},
+
+	// Moderator commands
+	{
+		Name:        commandIdMod,
+		Description: "Moderator commands",
+		Options: []*discordgo.ApplicationCommandOption{
+			{
+				Name:        commandApprove,
+				Type:        discordgo.ApplicationCommandOptionSubCommand,
+				Description: "Approve a member",
+				Options: []*discordgo.ApplicationCommandOption{
+					{
+						Type:        discordgo.ApplicationCommandOptionUser,
+						Name:        "user",
+						Description: "User to approve",
+						Required:    true,
+					},
+				},
+			},
+		},
+	},
 }
 
 func socratesHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
@@ -43,33 +62,18 @@ func socratesHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	switch data.Name {
 	case commandIdSocrates:
 		if data.Options == nil {
-			s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-				Type: discordgo.InteractionResponseChannelMessageWithSource,
-				Data: &discordgo.InteractionResponseData{
-					Content: "You need to select an option to interact with Socrates",
-				},
-			})
+			sendInteractionError(s, i, "You need to select an option to interact with Socrates")
 		} else {
 			socratesCommandHandler(s, i)
 		}
 	case commandIdMod:
 		if data.Options == nil {
-			s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-				Type: discordgo.InteractionResponseChannelMessageWithSource,
-				Data: &discordgo.InteractionResponseData{
-					Content: "You need to select an option to interact with Moderator commands",
-				},
-			})
+			sendInteractionError(s, i, "You need to select an option to interact with Moderator commands")
 		} else {
 			moderatorCommandHandler(s, i)
 		}
 	default:
-		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-			Type: discordgo.InteractionResponseChannelMessageWithSource,
-			Data: &discordgo.InteractionResponseData{
-				Content: "Something went wrong; commandId not recognized",
-			},
-		})
+		sendInteractionError(s, i, "Something went wrong; commandId not recognized")
 	}
 }
 
@@ -82,11 +86,6 @@ func socratesCommandHandler(s *discordgo.Session, i *discordgo.InteractionCreate
 	case commandSource:
 		handlers.Source(s, i)
 	default:
-		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-			Type: discordgo.InteractionResponseChannelMessageWithSource,
-			Data: &discordgo.InteractionResponseData{
-				Content: "Something went wrong",
-			},
-		})
+		sendInteractionError(s, i, "Something went wrong")
 	}
 }

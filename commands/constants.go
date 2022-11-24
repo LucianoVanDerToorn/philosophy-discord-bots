@@ -10,4 +10,7 @@ const (
 	// Subcommands shared
 	commandSpeak  = "speak"
 	commandSource = "source"
+
+	// Moderator commands
+	commandApprove = "approve"
 )

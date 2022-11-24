@@ -60,7 +60,3 @@ func messageCreateSocrates(s *discordgo.Session, m *discordgo.MessageCreate) {
 func memberJoins(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 	handlers.MemberJoins(s, m)
 }
-
-func memberGetsMemberRole(s *discordgo.Session, m *discordgo.GuildMemberUpdate) {
-	handlers.MemberAssignedMemberRole(s, m)
-}

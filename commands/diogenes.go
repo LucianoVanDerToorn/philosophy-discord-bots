@@ -41,22 +41,12 @@ func diogenesHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	switch data.Name {
 	case commandIdDiogenes:
 		if data.Options == nil {
-			s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-				Type: discordgo.InteractionResponseChannelMessageWithSource,
-				Data: &discordgo.InteractionResponseData{
-					Content: "You need to select an option to interact with Diogenes",
-				},
-			})
+			sendInteractionError(s, i, "You need to select an option to interact with Diogenes")
 		} else {
 			diogenesCommandHandler(s, i)
 		}
 	default:
-		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-			Type: discordgo.InteractionResponseChannelMessageWithSource,
-			Data: &discordgo.InteractionResponseData{
-				Content: "Something went wrong",
-			},
-		})
+		sendInteractionError(s, i, "Something went wrong")
 	}
 }
 
@@ -69,11 +59,6 @@ func diogenesCommandHandler(s *discordgo.Session, i *discordgo.InteractionCreate
 	case commandSource:
 		handlers.Source(s, i)
 	default:
-		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-			Type: discordgo.InteractionResponseChannelMessageWithSource,
-			Data: &discordgo.InteractionResponseData{
-				Content: "Something went wrong",
-			},
-		})
+		sendInteractionError(s, i, "Something went wrong")
 	}
 }
