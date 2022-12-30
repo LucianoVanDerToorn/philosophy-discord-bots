@@ -1,0 +1,19 @@
+#!/usr/bin/env -S deno run --allow-env --allow-read --allow-write
+
+const fileIn = "./speak_diogenes.txt"
+
+const fileDecoder = new TextDecoder("utf-8")
+const fileData = Deno.readFileSync(fileIn)
+const fileContents = fileDecoder.decode(fileData)
+
+const lines = fileContents
+    .split("---NEW---") // Split all lines
+    .filter(l => l !== "") // Filter out empty lines
+
+lines.forEach(l => {
+    if (l.length > 1999) {
+        console.log(`(${l.length}): ${l.slice(0, 100)}`)
+    }
+})
+
+console.log("done")
