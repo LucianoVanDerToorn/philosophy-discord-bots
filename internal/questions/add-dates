@@ -1,0 +1,31 @@
+#!/usr/bin/env -S deno run --allow-env --allow-read --allow-write
+
+const fileIn = "./questions_raw.txt"
+const fileOut = "./questions_withdate.txt"
+
+const fileDecoder = new TextDecoder("utf-8")
+const fileData = Deno.readFileSync(fileIn)
+const fileContents = fileDecoder.decode(fileData)
+
+const lines = fileContents
+    .split("\n") // Split all lines on the linebreak
+    .filter(l => l !== "") // Filter out empty lines
+
+let linesWithDate = []
+
+let leapYear = new Date("01/01/2020");
+for (const line of lines) {
+    const dayOfMonth = String(`${leapYear.getDate()}`).padStart(2, "0")
+    const monthOfYear = String(`${leapYear.getMonth() + 1}`).padStart(2, "0")
+    const dateString = `${dayOfMonth}-${monthOfYear}`
+
+    const lineWithDate = `${dateString}|${line}`
+    linesWithDate.push(lineWithDate)
+
+    leapYear = new Date(leapYear.setDate(leapYear.getDate() + 1)) // increment by one day
+}
+
+const fileWithDateContents = linesWithDate.join("\n")
+const encoder = new TextEncoder();
+const fileWithDateContent = encoder.encode(fileWithDateContents)
+Deno.writeFileSync(fileOut, fileWithDateContent)

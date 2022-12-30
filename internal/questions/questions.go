@@ -30,7 +30,7 @@ func ParseQuestionsString(qs string) map[string]string {
 }
 
 func GetQuestionForDate(questions map[string]string, date time.Time) (question string, found bool) {
-	dateString := date.Format("2006-01-02")
+	dateString := date.Format("01-02")
 	question, found = questions[dateString]
 	return
 }
