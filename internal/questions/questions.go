@@ -9,28 +9,23 @@ import (
 //go:embed questions.txt
 var QuestionFile string
 
-func LoadQuestions() map[string]string {
+func LoadQuestions() map[int]string {
 	return ParseQuestionsString(QuestionFile)
 }
 
-func ParseQuestionsString(qs string) map[string]string {
+func ParseQuestionsString(qs string) map[int]string {
 	lines := strings.Split(qs, "\n")
 
-	questionMap := make(map[string]string)
-	for _, l := range lines {
-		parts := strings.Split(l, "|")
-		if len(parts) < 2 {
-			continue
-		}
-		dateString := parts[0]
-		question := parts[1]
-		questionMap[dateString] = question
+	questionMap := make(map[int]string)
+	for l, question := range lines {
+		dayCount := l + 1
+		questionMap[dayCount] = question
 	}
 	return questionMap
 }
 
-func GetQuestionForDate(questions map[string]string, date time.Time) (question string, found bool) {
-	dateString := date.Format("01-02")
-	question, found = questions[dateString]
+func GetQuestionForDate(questions map[int]string, date time.Time) (question string, found bool) {
+	dateCount := date.YearDay()
+	question, found = questions[dateCount]
 	return
 }
