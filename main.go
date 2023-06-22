@@ -3,14 +3,16 @@ package main
 import (
 	_ "embed"
 	"fmt"
-	"github.com/LucianoVanDerToorn/philosophy-discord-bots/commands"
+	"net/http"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/dimiro1/health"
 
+	"github.com/LucianoVanDerToorn/philosophy-discord-bots/commands"
 	"github.com/LucianoVanDerToorn/philosophy-discord-bots/handlers"
 	"github.com/LucianoVanDerToorn/philosophy-discord-bots/jobs"
 )
@@ -184,6 +186,16 @@ func main() {
 	sgSocrates := initSocrates(config.Socrates)
 	sgDiogenes := initDiogenes(config.Diogenes)
 	sgBenjamin := initBenjamin(config.Benjamin)
+
+	// Expose health check endpoint
+	healthHandler := health.NewHandler()
+	healthHandler.AddInfo("bots", "UP")
+	http.Handle("/health/", healthHandler)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("health endpoint on :8080/health/")
 
 	// Wait here until CTRL-C or other term signal is received.
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
