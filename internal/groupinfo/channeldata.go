@@ -30,13 +30,14 @@ var ChannelDataLookup = map[string]ChannelData{
 	},
 	"plato": {
 		Name:      "Plato",
-		Leader:    "Yorgo",
+		Leader:    "Constantine",
 		MeetingOn: MeetingOnUnsure,
 	},
 	"stirner": {
 		Name:      "Stirner",
-		Leader:    "Yorgo",
-		MeetingOn: MeetingOnDiscord,
+		Leader:    "Timothy",
+		ZoomLink:  "https://weber.zoom.us/j/96400307602",
+		MeetingOn: MeetingOnZoom,
 	},
 	"stoicism": {
 		Name:      "Stoicism",
